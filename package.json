@@ -18,8 +18,8 @@
     "parse",
     "query"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Michael Sleevi <michael.sleevi@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
