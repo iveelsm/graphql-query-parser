@@ -1,0 +1,4 @@
+query QueryWithoutFragment {
+  id,
+  name
+}

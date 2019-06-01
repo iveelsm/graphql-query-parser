@@ -1,0 +1,78 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": [
+    "mocha"
+  ],
+  "rules": {
+    "brace-style": [
+      "error",
+      "1tbs",
+      { "allowSingleLine": true }
+    ],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "curly": "error",
+    "dot-notation": "off",
+
+    "eqeqeq": [
+      "error",
+      "always",
+      { "null": "ignore" }
+    ],
+    "func-names": "error",
+    "guard-for-in": "off",
+    "key-spacing": [
+      "error",
+      { "mode": "minimum" }
+    ],
+    "max-statements-per-line": [
+      "error",
+      { "max": 2 }
+    ],
+    "mocha/no-exclusive-tests": "error",
+    "no-caller": "error",
+    "new-cap": "off",
+    "no-cond-assign": [
+      "error",
+      "except-parens"
+    ],
+    "no-debugger": "error",
+    "no-eval": "error",
+    "no-plusplus": "off",
+    "no-return-await": "error",
+    "no-undef": "error",
+    "no-unused-vars": [ "error", { "varsIgnorePattern": "^_"}],
+    "one-var": "off",
+    "operator-linebreak": [
+      "error",
+      "after"
+    ],
+    "prefer-spread": "error",
+    "quotes": "off",
+    "require-yield": "off",
+    "strict": "off",
+    "no-console": "off"
+  },
+  "globals": {
+    "expect": true,
+    "sandbox": true,
+    "metricsCapturer": true,
+    "moment": true,
+    "request": true,
+    "DynamoHelper": true
+  }
+}

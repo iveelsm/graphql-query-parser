@@ -1,0 +1,3 @@
+fragment FragmentThree on FragmentableTypeThree {
+  ... FragmentFour
+}

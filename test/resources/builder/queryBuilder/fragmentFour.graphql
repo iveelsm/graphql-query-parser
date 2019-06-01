@@ -1,0 +1,4 @@
+fragment FragmentFour on FragmentableTypeFour {
+  id
+  name
+}

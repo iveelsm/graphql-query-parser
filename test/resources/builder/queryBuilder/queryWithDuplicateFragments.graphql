@@ -1,0 +1,13 @@
+query QueryWithDuplicateFragments {
+  fragmentOne {
+    ... FragmentOne
+  }
+
+  fragmentTwo {
+    ...FragmentTwo
+  }
+
+  fragmentThree {
+    ...FragmentOne
+  }
+}

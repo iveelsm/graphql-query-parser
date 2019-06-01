@@ -1,0 +1,12 @@
+query QueryWithManyFragments {
+  framgentOne {
+    ... SingleFragment
+  }
+  fragmentTwo {
+    ... DifferentFragment
+  }
+
+  fragmentThree {
+    ...UniqueFragment
+  }
+}
