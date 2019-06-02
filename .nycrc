@@ -2,8 +2,5 @@
     "extension": [
       ".ts"
     ],
-    "reporter": [
-      "lcov"
-    ],
     "all": true  
   }

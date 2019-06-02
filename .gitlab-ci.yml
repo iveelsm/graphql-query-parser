@@ -1,0 +1,35 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+  - validate
+  - report
+
+before_script:
+  - npm ci
+
+cache:
+  paths:
+  - node_modules/
+
+build:compile:
+  stage: build
+  script: npm run build:compile
+
+build:dependency-graph:
+  stage: build
+  before_script:
+    - apt-get update
+    - apt-get install --assume-yes graphviz
+  script: npm run build:dependency
+  artifacts:
+    paths:
+      - dependencygraph.svg
+
+unit:
+  stage: test
+  script: npm run test
+  artifacts:
+    paths:
+      - coverage/
