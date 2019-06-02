@@ -4,7 +4,7 @@
     "node": true,
     "mocha": true
   },
-  "extends": "eslint:recommended",
+  "extends": "plugin:@typescript-eslint/recommended",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 8,
@@ -12,7 +12,9 @@
       "experimentalObjectRestSpread": true
     }
   },
+  "parser": "@typescript-eslint/parser",
   "plugins": [
+    "@typescript-eslint",
     "mocha"
   ],
   "rules": {
@@ -27,11 +29,17 @@
     ],
     "curly": "error",
     "dot-notation": "off",
-
     "eqeqeq": [
       "error",
       "always",
       { "null": "ignore" }
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      { 
+        "allowExpressions": true, 
+        "allowTypedFunctionExpressions": true 
+      }
     ],
     "func-names": "error",
     "guard-for-in": "off",
@@ -54,18 +62,14 @@
     "no-eval": "error",
     "no-plusplus": "off",
     "no-return-await": "error",
-    "no-undef": "error",
+    "no-undef": "off",
     "no-unused-vars": [ "error", { "varsIgnorePattern": "^_"}],
     "one-var": "off",
-    "operator-linebreak": [
-      "error",
-      "after"
-    ],
     "prefer-spread": "error",
     "quotes": "off",
     "require-yield": "off",
     "strict": "off",
-    "no-console": "off"
+    "no-console": "error"
   },
   "globals": {
     "expect": true,

@@ -7,11 +7,13 @@
   "description": "A utility for parsing queries out of GraphQL files",
   "main": "index.ts",
   "scripts": {
-    "test": "nyc mocha test/**/*.ts",
     "build": "npm run build:compile && npm run test && npm run build:dependency",
     "build:compile": "tsc --project tsconfig.json",
     "build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
-    "lint": "eslint ."
+    "lint": "npm run lint:lib && npm run lint:test",
+    "lint:lib": "eslint lib/**/*.ts",
+    "lint:test": "eslint test/**/*.ts",
+    "test": "nyc mocha test/**/*.ts"
   },
   "keywords": [
     "graphql",
@@ -24,6 +26,8 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.0.2",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
     "chai": "^4.2.0",
     "dependency-cruiser": "^4.19.1",
     "eslint": "^5.16.0",
