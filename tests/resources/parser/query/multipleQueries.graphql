@@ -1,0 +1,14 @@
+query QueryOne {
+  id
+  name
+}
+
+query QueryTwo {
+  id
+  name
+}
+
+query QueryThree {
+  id
+  name
+}

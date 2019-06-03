@@ -1,0 +1,9 @@
+query SingleQueryWithVariables($id: ID!, $test: String) {
+  id
+  name
+
+  result(id: $id, test: $test) {
+    id
+    name
+  }
+}

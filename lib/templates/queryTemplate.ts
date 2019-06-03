@@ -1,7 +1,7 @@
 export default class QueryTemplate {
     private cacheKey: string;
     private template: string;
-    private variables: string[];
+    public variables: string[];
   
     public constructor(cacheKey: string, template: string, variables: string[]) {
         this.cacheKey = cacheKey;

@@ -12,8 +12,8 @@
     "build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
     "lint": "npm run lint:lib && npm run lint:test",
     "lint:lib": "eslint lib/**/*.ts",
-    "lint:test": "eslint test/**/*.ts",
-    "test": "nyc mocha test/**/*.ts"
+    "lint:test": "eslint tests/**/*.ts",
+    "test": "nyc mocha --opts tests/mocha.opts"
   },
   "keywords": [
     "graphql",

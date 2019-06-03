@@ -10,7 +10,7 @@ export default class FragmentExtractor implements GraphQLExtractor<string, Array
     this.parser = new FragmentParser();
   }
 
-  extract(input: string): Array<FragmentTemplate> {
+  public extract(input: string): Array<FragmentTemplate> {
     return this.parser.parse(input);
   }
 }
