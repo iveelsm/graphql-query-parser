@@ -5,6 +5,12 @@ function readResource(path: string): string {
   return fs.readFileSync(fullPath, { encoding: 'utf8' });
 }
 
+function createReadStream(path: string): fs.ReadStream {
+  const fullPath = __dirname + "/resources/" + path;
+  return fs.createReadStream(fullPath, { encoding: 'utf8' });
+}
+
 export {
-  readResource
+  readResource,
+  createReadStream
 }

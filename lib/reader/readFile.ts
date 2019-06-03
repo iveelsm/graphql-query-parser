@@ -14,6 +14,7 @@ function readFile(filePath: string, options: Options): fs.ReadStream {
     if (isGraphQLFile(filePath)) {
         return fs.createReadStream(filePath, options.encoding);
     }
+    return null;
 }
 
 export {

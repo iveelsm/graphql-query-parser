@@ -12,6 +12,7 @@ export default class DirectoryReader implements Reader<string, Array<fs.ReadStre
     return fs.readdirSync(directoryPath)
       .map(file => {
         return readFile(directoryPath + file, this.options);
-      });
+      })
+      .filter(x => x);
   }
 }
