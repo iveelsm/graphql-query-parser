@@ -4,6 +4,7 @@ import GraphQLParser from "../graphQLParser";
 export default class QueryParser implements GraphQLParser<string, QueryTemplate[]> {
   private queryNameRegex = /((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
   private queryRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/g;
+  private queryVariablesRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
   private variableRegex = /(\$[a-zA-Z]+)/g;
 
   public parse(data: string): QueryTemplate[] {
@@ -46,8 +47,22 @@ export default class QueryParser implements GraphQLParser<string, QueryTemplate[
   }
 
   private buildTemplate(query: string, queryIdentifier: string): QueryTemplate {
-    const variables = this.parseVariables(query);
-    return new QueryTemplate(this.queryNameRegex.exec(queryIdentifier)[3], query, variables);
+    return new QueryTemplate(
+      this.queryNameRegex.exec(queryIdentifier)[3], 
+      this.removeVariables(query), 
+      this.parseVariables(query));
+  }
+
+  private removeVariables(query: string) {
+    try {
+      const match = this.queryVariablesRegex.exec(query);
+      if(match.length > 5) {
+        query = query.replace(match[4], "");
+      }
+      return query;
+    } catch(e) {
+      return query;
+    }
   }
 
 
