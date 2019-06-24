@@ -1,10 +1,18 @@
 import { FragmentTemplate } from "../../../templates";
 import GraphQLParser from "../graphQLParser";
 
+/**
+ * Parses potential fragment strings to determine if a fragment exists
+ */
 export default class FragmentParser implements GraphQLParser<string, FragmentTemplate[]> {
   private fragmentNameRegex = /((.*?[\bfragment\b])[\s]{1,}([a-zA-Z]+)[\s]{1,}(.*?[\bon\b])[\s]{1,}([a-zA-Z]+)[\s]{0,}\{)/;
   private fragmentRegex = /((.*?[\bfragment\b])[\s]{1,}([a-zA-Z]+)[\s]{1,}(.*?[\bon\b])[\s]{1,}([a-zA-Z]+)[\s]{0,}\{)/g;
 
+  /**
+   * Attempts to derive one or many fragment templates from an input string
+   * 
+   * @param data String result to parse
+   */
   public parse(data: string): FragmentTemplate[] {
     return this.parseFragments(data);
   }

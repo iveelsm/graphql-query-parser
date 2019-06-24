@@ -11,7 +11,18 @@ function isString(x: Path): boolean {
     return typeof x === "string";
 }
 
+/**
+ * 
+ */
 export default class GraphQLQueryParser {
+    /**
+     * Parses all the information from the paths provided.
+     * This method will parse data in the form of fragments and queries.
+     * Then cache the data in order to construct many results for use by GraphQL clients
+     * 
+     * @param paths Paths to parse information from
+     * @param variables Variables to apply to the queries
+     */
     public static async parse(paths: Path, variables: Variables = {}): Promise<string[]> {
         const streams = this.read(paths, new GraphQLQueryReader());
         const results = await Promise.all(this.parseStreams(streams, new ReadStreamParser()));
@@ -21,13 +32,25 @@ export default class GraphQLQueryParser {
         return GraphQLQueryBuilder.build(cache, variables);
     }
 
+    /**
+     * Reads the information from the the path
+     * 
+     * @param paths Single path or many paths
+     * @param reader Reads the results from the path information provided
+     */
     private static read(paths: Path, reader: GraphQLQueryReader): ReadStream[] {
         return (isString(paths))
             ? reader.read((paths as string))
             : reader.readMany((paths as string[]));
     }
 
-    private static parseStreams(streams: ReadStream[], parser: ReadStreamParser): Array<Promise<ParseResults>> {
+    /**
+     * Parses all the read stream information to return template data
+     * 
+     * @param streams Streams to parse from
+     * @param parser Parser to use when finding data from the streams
+     */
+    private static parseStreams(streams: ReadStream[], parser: ReadStreamParser): Promise<ParseResults>[] {
         return parser.parse(streams);
     }
 }

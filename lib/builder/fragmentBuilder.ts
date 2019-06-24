@@ -1,9 +1,20 @@
 import { Cache } from "../cache";
 
-
+/**
+ * The Fragment Builder will:
+ *   * Build a given fragment
+ *   * Identify nested fragments
+ *   * Ignores implicit fragments
+ */
 export default class FragmentBuilder {
     private static fragmentRegex = /(.*[\.]{3,}\s{0,})([^on\s{1,}][a-zA-Z]+)/g;
 
+    /**
+     * Builds the fragment result set
+     * 
+     * @param query Query string to build fragments for
+     * @param cache Cache containing the fragments
+     */
     public static build(query: string, cache: Cache): FragmentResults[] {
         return this.addFragments(query, [], cache);
     }
