@@ -1,4 +1,4 @@
-import { QueryTemplate } from '../../lib/templates';
+import { QueryTemplate } from '../../../lib/templates';
 import { readResource } from '../resourceReader';
 import { expect } from 'chai';
 

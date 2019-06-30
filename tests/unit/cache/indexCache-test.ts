@@ -1,4 +1,4 @@
-import { IndexCache } from "../../lib/cache";
+import { IndexCache } from "../../../lib/cache";
 import { expect, assert } from 'chai';
 
 describe('Index Cache', function() {

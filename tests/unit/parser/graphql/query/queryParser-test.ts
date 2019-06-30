@@ -1,4 +1,4 @@
-import QueryParser from '../../../../lib/parser/graphql/query/queryParser';
+import QueryParser from '../../../../../lib/parser/graphql/query/queryParser';
 import { readResource } from '../../../resourceReader';
 import { expect } from 'chai';
 

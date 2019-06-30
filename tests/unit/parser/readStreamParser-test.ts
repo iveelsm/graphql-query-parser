@@ -1,4 +1,4 @@
-import { ReadStreamParser } from '../../lib/parser';
+import { ReadStreamParser } from '../../../lib/parser';
 import { createReadStream } from '../resourceReader';
 import { expect } from 'chai';
 

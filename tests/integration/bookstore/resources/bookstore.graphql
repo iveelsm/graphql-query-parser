@@ -1,0 +1,8 @@
+query GetBooksFromBookstore {
+  topSellers {
+    ... BookFragment
+    authors {
+      ... AuthorFragment
+    }
+  }
+}

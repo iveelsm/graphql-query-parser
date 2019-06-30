@@ -1,4 +1,4 @@
-import { QueryTemplate } from "../../lib/templates";
+import { QueryTemplate } from "../../../lib/templates";
 
 export default class FakeQueryTemplate {
     private cacheKey: string;

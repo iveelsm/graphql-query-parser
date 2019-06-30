@@ -1,5 +1,5 @@
 import { FakeCacheBuilder, FakeQueryTemplate } from '../fakes';
-import QueryBuilder from '../../lib/builder/queryBuilder';
+import QueryBuilder from '../../../lib/builder/queryBuilder';
 import { readResource } from '../resourceReader';
 import { expect } from 'chai';
 

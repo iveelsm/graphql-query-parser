@@ -1,4 +1,4 @@
-import { FragmentTemplate } from "../../lib/templates";
+import { FragmentTemplate } from "../../../lib/templates";
 
 
 export default class FakeFragmentTemplate {

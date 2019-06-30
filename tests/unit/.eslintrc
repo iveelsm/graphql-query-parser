@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "../../.eslintrc"
+  ],
+  "rules": {
+    "func-names": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  }
+}
