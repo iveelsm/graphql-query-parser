@@ -1,5 +1,3 @@
-import GraphQLQueryParser from './graphQLQueryParser';
+import parse from './graphQLQueryParser';
 
-export {
-  GraphQLQueryParser
-}
+export default parse;

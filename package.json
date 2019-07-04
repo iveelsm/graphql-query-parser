@@ -1,7 +1,8 @@
 {
   "name": "graphql-query-parser",
   "repository": {
-    "gitlab": "https://gitlab.com/msleevi/graphql-query-parser/"
+    "type": "git",
+    "url": "git+https://gitlab.com/msleevi/graphql-query-parser.git"
   },
   "version": "0.0.1",
   "description": "A utility for parsing queries out of GraphQL files",
@@ -39,5 +40,9 @@
     "nyc": "^14.1.1",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
-  }
+  },
+  "bugs": {
+    "url": "https://gitlab.com/msleevi/graphql-query-parser/issues"
+  },
+  "homepage": "https://gitlab.com/msleevi/graphql-query-parser#readme"
 }
