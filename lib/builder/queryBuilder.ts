@@ -1,7 +1,7 @@
-import FragmentBuilder from "./fragmentBuilder";
-import { QueryTemplate } from "../templates";
-import { Cache } from '../cache';
-import Results from "./results";
+import FragmentBuilder from "./fragmentBuilder.js";
+import { QueryTemplate } from "../templates/index.js";
+import { Cache } from '../cache/index.js';
+import Results from "./results.js";
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 
@@ -17,7 +17,7 @@ export default class QueryBuilder {
      * Builds a query from a template by doing the following:
      *   * Apply Variables from Configuration if necessary
      *   * Identifies fragments to add to the query and adds them if necessary
-     * 
+     *
      * @param query Query to build from
      * @param cache Cache of information with fragments and queries
      * @param variables Configured variable information that might yield a partial apply to the query

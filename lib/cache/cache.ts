@@ -1,5 +1,5 @@
-import { QueryTemplate, FragmentTemplate } from '../templates';
-import IndexCache from './indexCache';
+import { QueryTemplate, FragmentTemplate } from '../templates/index.js';
+import IndexCache from './indexCache.js';
 
 /**
  * Cache is a container for all queries and framgnet chunks
@@ -11,7 +11,7 @@ interface Cache {
 
 /**
  * This will loop through a list of [[QueryTemplate]]s and cache the query for usage later on
- * 
+ *
  * @param cache Cache will be pushing the values into
  * @param queries Queries to cache
  */
@@ -26,7 +26,7 @@ function cacheQueries(cache: Cache, queries: QueryTemplate[]): void {
 
 /**
  * This will loop through a list of [[FragmentTemplate]]s and cache them for usage later on
- * 
+ *
  * @param cache Cache will be pushing the values into
  * @param fragments Fragments to cache
  */
@@ -41,7 +41,7 @@ function cacheFragments(cache: Cache, fragments: FragmentTemplate[]): void {
 
 /**
  * Builds a cache by caching all the fragments and queries passed in
- * 
+ *
  * @param fragments Fragments to build into the cache
  * @param queries Queries to build into the cache
  * @returns Cache will all the queries and fragments required

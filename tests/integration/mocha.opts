@@ -1,4 +1,0 @@
---option value tests/integration/**/*-test.ts
---require ts-node/register
---require source-map-support/register
---recursive

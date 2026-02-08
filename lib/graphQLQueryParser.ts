@@ -1,11 +1,11 @@
-import { ReadStreamParser, ParseResults } from './parser';
-import GraphQLQueryBuilder from './builder';
-import GraphQLQueryReader from './reader';
-import { buildCache } from './cache';
+import { ReadStreamParser, ParseResults } from './parser/index.js';
+import GraphQLQueryBuilder from './builder/index.js';
+import GraphQLQueryReader from './reader/index.js';
+import { buildCache } from './cache/index.js';
 import { ReadStream } from 'fs';
 
 type Path = string | string[]
-type Variables = Object
+type Variables = Record<string, unknown>
 
 function isString(x: Path): boolean {
     return typeof x === "string";
@@ -15,7 +15,7 @@ function isString(x: Path): boolean {
  * Parses all the information from the paths provided.
  * This method will parse data in the form of fragments and queries.
  * Then cache the data in order to construct many results for use by GraphQL clients
- * 
+ *
  * @param paths Paths to parse information from
  * @param variables Variables to apply to the queries
  */
@@ -30,7 +30,7 @@ async function parse(paths: Path, variables: Variables = {}): Promise<string[]> 
 
 /**
  * Reads the information from the the path
- * 
+ *
  * @param paths Single path or many paths
  * @param reader Reads the results from the path information provided
  */
@@ -42,7 +42,7 @@ function read(paths: Path, reader: GraphQLQueryReader): ReadStream[] {
 
 /**
  * Parses all the read stream information to return template data
- * 
+ *
  * @param streams Streams to parse from
  * @param parser Parser to use when finding data from the streams
  */

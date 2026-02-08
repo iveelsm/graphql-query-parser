@@ -1,19 +1,19 @@
-import { QueryTemplate } from "../../../templates";
-import GraphQLParser from "../graphQLParser";
+import { QueryTemplate } from "../../../templates/index.js";
+import GraphQLParser from "../graphQLParser.js";
 
 /**
  * Parses query files for by converting them into [[QueryTemplate]]s
  */
 export default class QueryParser implements GraphQLParser<string, QueryTemplate[]> {
-  private queryNameRegex = /((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
-  private queryRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/g;
-  private queryVariablesRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
+  private queryNameRegex = /((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^)]{0,})\)){0,}/;
+  private queryRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^)]{0,})\)){0,}/g;
+  private queryVariablesRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^)]{0,})\)){0,}/;
   private variableRegex = /(\$[a-zA-Z]+)/g;
 
   /**
-   * Parse data from the input string. 
+   * Parse data from the input string.
    * Can identify no to many query templates
-   * 
+   *
    * @param data String to parse information from
    */
   public parse(data: string): QueryTemplate[] {
@@ -40,7 +40,7 @@ export default class QueryParser implements GraphQLParser<string, QueryTemplate[
     while(bracesSet.length > 0) {
       index++;
       const char = data[index];
-      subQuery += char; 
+      subQuery += char;
       switch(char) {
         case '{':
           bracesSet.push(char);
@@ -56,20 +56,24 @@ export default class QueryParser implements GraphQLParser<string, QueryTemplate[
   }
 
   private buildTemplate(query: string, queryIdentifier: string): QueryTemplate {
+    const match = this.queryNameRegex.exec(queryIdentifier);
+    if (!match) {
+      throw new Error(`Invalid query identifier: ${queryIdentifier}`);
+    }
     return new QueryTemplate(
-      this.queryNameRegex.exec(queryIdentifier)[3], 
-      this.removeVariables(query), 
+      match[3],
+      this.removeVariables(query),
       this.parseVariables(query));
   }
 
-  private removeVariables(query: string) {
+  private removeVariables(query: string): string {
     try {
       const match = this.queryVariablesRegex.exec(query);
-      if(match.length > 5) {
+      if(match && match.length > 5) {
         query = query.replace(match[4], "");
       }
       return query;
-    } catch(e) {
+    } catch {
       return query;
     }
   }

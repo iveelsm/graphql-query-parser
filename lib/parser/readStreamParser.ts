@@ -1,7 +1,7 @@
-import { QueryExtractor, FragmentExtractor } from "./graphql";
-import ParseResults from "./parseResults";
+import { QueryExtractor, FragmentExtractor } from "./graphql/index.js";
+import ParseResults from "./parseResults.js";
 import { ReadStream } from "fs";
-import Parser from './parser';
+import Parser from './parser.js';
 
 /**
  * Parses results from a ReadStream
@@ -28,16 +28,16 @@ export default class ReadStreamParser implements Parser<ReadStream[], Promise<Pa
                 }
                 return result;
             });
-        } catch(e) {
-            return null;
+        } catch {
+            return [];
         }
     }
 
     private parseData(stream: ReadStream): Promise<ParseResults> {
         return new Promise((resolve, reject) => {
             let results: ParseResults;
-            stream.on('data', (data) => {
-                results = this.extract(data);
+            stream.on('data', (data: Buffer | string) => {
+                results = this.extract(data.toString());
             });
             stream.on('end', () => {
                 resolve(results);

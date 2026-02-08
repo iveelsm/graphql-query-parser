@@ -1,18 +1,18 @@
-import { readFile } from '../readFile';
-import Reader from "../reader";
+import { readFile, Options } from '../readFile.js';
+import Reader from "../reader.js";
 import * as fs from 'fs';
 
 /**
  * Directory Readers are responsible for reading information from a directory of files
  */
 export default class DirectoryReader implements Reader<string, fs.ReadStream[]> {
-  private options = {
+  private options: Options = {
     encoding: 'utf8'
   }
 
   /**
    * Reads the information from a directory string identifier
-   * 
+   *
    * @param directory Directory to open the read streams from
    */
   public read(directory: string): fs.ReadStream[] {
@@ -21,6 +21,6 @@ export default class DirectoryReader implements Reader<string, fs.ReadStream[]> 
       .map(file => {
         return readFile(directoryPath + file, this.options);
       })
-      .filter(x => x);
+      .filter((x): x is fs.ReadStream => x !== null);
   }
 }

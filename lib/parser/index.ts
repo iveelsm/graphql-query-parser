@@ -1,5 +1,5 @@
-import ReadStreamParser from './readStreamParser';
-import ParseResults from './parseResults';
+import ReadStreamParser from './readStreamParser.js';
+import ParseResults from './parseResults.js';
 
 export {
     ReadStreamParser,

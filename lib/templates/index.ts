@@ -1,5 +1,5 @@
-import FragmentTemplate from './fragmentTemplate';
-import QueryTemplate from './queryTemplate';
+import FragmentTemplate from './fragmentTemplate.js';
+import QueryTemplate from './queryTemplate.js';
 
 export {
     FragmentTemplate,
