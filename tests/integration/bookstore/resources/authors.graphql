@@ -1,0 +1,14 @@
+query GetAuthors {
+  authors {
+    ... AuthorFragment
+    books {
+      ... BookFragment
+    }
+  }
+}
+
+fragment AuthorFragment on Author {
+  id
+  name
+  email
+}

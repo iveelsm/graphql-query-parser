@@ -13,7 +13,10 @@
     "lint": "npm run lint:lib && npm run lint:test",
     "lint:lib": "eslint lib/**/*.ts",
     "lint:test": "eslint tests/**/*.ts",
-    "test": "nyc mocha --opts tests/mocha.opts"
+    "coverage": "nyc npm run test",
+    "test": "npm run unit && npm run integration",
+    "unit": "mocha --opts tests/unit/mocha.opts", 
+    "integration": "mocha --opts tests/integration/mocha.opts"
   },
   "keywords": [
     "graphql",

@@ -17,22 +17,13 @@ build:compile:
   stage: build
   script: npm run build:compile
 
-build:dependency-graph:
-  stage: build
-  before_script:
-    - apt-get update
-    - apt-get install --assume-yes graphviz
-  script: npm run build:dependency
-  artifacts:
-    paths:
-      - dependencygraph.svg
-
 unit:
   stage: test
-  script: npm run test
-  artifacts:
-    paths:
-      - coverage/
+  script: npm run unit
+
+integration:
+  stage: test
+  script: npm run integration
 
 lint:lib:
   stage: validate
@@ -41,3 +32,17 @@ lint:lib:
 lint:test:
   stage: validate
   script: npm run lint:test
+
+coverage:
+  stage: report
+  script: npm run coverage
+
+dependency-graph:
+  stage: report
+  before_script:
+    - apt-get update
+    - apt-get install --assume-yes graphviz
+  script: npm run build:dependency
+  artifacts:
+    paths:
+      - dependencygraph.svg

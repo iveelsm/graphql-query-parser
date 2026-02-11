@@ -1,4 +1,4 @@
-import FragmentBuilder from '../../lib/builder/fragmentBuilder';
+import FragmentBuilder from '../../../lib/builder/fragmentBuilder';
 import { readResource } from '../resourceReader';
 import { FakeCacheBuilder } from '../fakes';
 import { expect } from 'chai';

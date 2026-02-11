@@ -1,4 +1,4 @@
-import GraphQLQueryReader from "../../lib/reader";
+import GraphQLQueryReader from "../../../lib/reader";
 import { expect } from 'chai';
 
 describe('GraphQL Query Reader', function() {

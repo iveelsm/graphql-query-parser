@@ -1,0 +1,12 @@
+query GetBooks {
+  books {
+    ... BookFragment
+  }
+}
+
+fragment BookFragment on Book {
+  id
+  name
+  date
+  publisher
+}

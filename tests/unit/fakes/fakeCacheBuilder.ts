@@ -1,6 +1,6 @@
 import FakeFragmentTemplate from "./fakeFragmentTemplate";
 import FakeQueryTemplate from "./fakeQueryTemplate";
-import { Cache, IndexCache } from "../../lib/cache";
+import { Cache, IndexCache } from "../../../lib/cache";
 
 export default class FakeCacheBuilder {
     private cache: Cache;

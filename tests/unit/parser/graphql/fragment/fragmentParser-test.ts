@@ -1,4 +1,4 @@
-import FragmentParser from '../../../../lib/parser/graphql/fragment/fragmentParser';
+import FragmentParser from '../../../../../lib/parser/graphql/fragment/fragmentParser';
 import { readResource } from '../../../resourceReader';
 import { expect } from 'chai';
 

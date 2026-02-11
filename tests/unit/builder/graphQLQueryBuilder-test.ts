@@ -1,4 +1,4 @@
-import GraphQLQueryBuilder from '../../lib/builder';
+import GraphQLQueryBuilder from '../../../lib/builder';
 import { readResource } from '../resourceReader';
 import { FakeCacheBuilder } from '../fakes';
 import { expect } from 'chai';

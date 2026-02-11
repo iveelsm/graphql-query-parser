@@ -1,5 +1,5 @@
 import { FakeFragmentTemplate, FakeQueryTemplate } from '../fakes';
-import { buildCache } from '../../lib/cache';
+import { buildCache } from '../../../lib/cache';
 import { readResource } from '../resourceReader';
 import { expect, assert } from 'chai';
 
