@@ -9,7 +9,7 @@ type Path = string | string[];
 type Variables = Record<string, unknown>;
 
 function isString(x: Path): boolean {
-    return typeof x === "string";
+	return typeof x === "string";
 }
 
 /**
@@ -21,21 +21,21 @@ function isString(x: Path): boolean {
  * @param variables Variables to apply to the queries
  */
 async function parse(
-    paths: Path,
-    variables: Variables = {},
+	paths: Path,
+	variables: Variables = {},
 ): Promise<string[]> {
-    const streams = read(paths, new GraphQLQueryReader());
-    const results = await Promise.all(
-        parseStreams(streams, new ReadStreamParser()),
-    );
-    const fragments = results
-        .map((x) => x.fragmentResults)
-        .reduce((acc, x) => acc.concat(...x), []);
-    const queries = results
-        .map((x) => x.queryResults)
-        .reduce((acc, x) => acc.concat(...x), []);
-    const cache = buildCache(fragments, queries);
-    return GraphQLQueryBuilder.build(cache, variables);
+	const streams = read(paths, new GraphQLQueryReader());
+	const results = await Promise.all(
+		parseStreams(streams, new ReadStreamParser()),
+	);
+	const fragments = results
+		.map((x) => x.fragmentResults)
+		.reduce((acc, x) => acc.concat(...x), []);
+	const queries = results
+		.map((x) => x.queryResults)
+		.reduce((acc, x) => acc.concat(...x), []);
+	const cache = buildCache(fragments, queries);
+	return GraphQLQueryBuilder.build(cache, variables);
 }
 
 /**
@@ -45,9 +45,9 @@ async function parse(
  * @param reader Reads the results from the path information provided
  */
 function read(paths: Path, reader: GraphQLQueryReader): ReadStream[] {
-    return isString(paths)
-        ? reader.read(paths as string)
-        : reader.readMany(paths as string[]);
+	return isString(paths)
+		? reader.read(paths as string)
+		: reader.readMany(paths as string[]);
 }
 
 /**
@@ -57,10 +57,10 @@ function read(paths: Path, reader: GraphQLQueryReader): ReadStream[] {
  * @param parser Parser to use when finding data from the streams
  */
 function parseStreams(
-    streams: ReadStream[],
-    parser: ReadStreamParser,
+	streams: ReadStream[],
+	parser: ReadStreamParser,
 ): Promise<ParseResults>[] {
-    return parser.parse(streams);
+	return parser.parse(streams);
 }
 
 export default parse;

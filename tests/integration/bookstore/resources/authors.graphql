@@ -1,14 +1,14 @@
 query GetAuthors {
-    authors {
-        ...AuthorFragment
-        books {
-            ...BookFragment
-        }
-    }
+	authors {
+		...AuthorFragment
+		books {
+			...BookFragment
+		}
+	}
 }
 
 fragment AuthorFragment on Author {
-    id
-    name
-    email
+	id
+	name
+	email
 }

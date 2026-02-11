@@ -1,6 +1,6 @@
 query QueryWithImplicitFragment {
-    ... on FragmentableType {
-        id
-        name
-    }
+	... on FragmentableType {
+		id
+		name
+	}
 }
