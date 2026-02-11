@@ -1,12 +1,21 @@
 import { QueryTemplate } from "../../../templates";
 import GraphQLParser from "../graphQLParser";
 
+/**
+ * Parses query files for by converting them into [[QueryTemplate]]s
+ */
 export default class QueryParser implements GraphQLParser<string, QueryTemplate[]> {
   private queryNameRegex = /((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
   private queryRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/g;
   private queryVariablesRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
   private variableRegex = /(\$[a-zA-Z]+)/g;
 
+  /**
+   * Parse data from the input string. 
+   * Can identify no to many query templates
+   * 
+   * @param data String to parse information from
+   */
   public parse(data: string): QueryTemplate[] {
     return this.parseQueries(data);
   }

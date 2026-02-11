@@ -3,6 +3,9 @@ import ParseResults from "./parseResults";
 import { ReadStream } from "fs";
 import Parser from './parser';
 
+/**
+ * Parses results from a ReadStream
+ */
 export default class ReadStreamParser implements Parser<ReadStream[], Promise<ParseResults>[]> {
     private queryExtractor: QueryExtractor
     private fragmentExtractor: FragmentExtractor
@@ -12,6 +15,10 @@ export default class ReadStreamParser implements Parser<ReadStream[], Promise<Pa
         this.fragmentExtractor = new FragmentExtractor();
     }
 
+    /**
+     * Parses multiple read streams and returns the [[ParseResult]] from each read stream
+     * @param streams Streams that contain the information for parsing
+     */
     public parse(streams: ReadStream[]): Promise<ParseResults>[] {
         try {
             return streams.map(async stream => {

@@ -1,3 +1,8 @@
+/* eslint @typescript-eslint/no-explicit-any: 0 */
+
+/**
+ * Query Templates are the primary form of encapsulation for query information
+ */
 export default class QueryTemplate {
     private cacheKey: string;
     private template: string;
