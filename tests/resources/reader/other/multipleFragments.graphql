@@ -1,0 +1,14 @@
+fragment FragmentOne on FragmentableType {
+  id,
+  name
+}
+
+fragment FragmentTwo on FragmentableType {
+  id,
+  name
+}
+
+fragment FragmentThree on FragmentableType {
+  id,
+  name
+}
