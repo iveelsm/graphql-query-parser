@@ -11,7 +11,6 @@ function isString(x: Path): boolean {
     return typeof x === "string";
 }
 
-
 export default class GraphQLQueryParser {
     public static async parse(paths: Path, variables: Variables = {}): Promise<string[]> {
         const streams = this.read(paths, new GraphQLQueryReader());

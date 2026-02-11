@@ -17,7 +17,7 @@ export default class QueryTemplate {
         const entries = Object.entries(variables);
         entries.forEach(entry => {
             if(this.variables.includes(entry[0])) {
-                this.template.replace(entry[0], entry[1]);
+                this.template = this.template.replace(entry[0], entry[1]);
             }
         });
         return this.template;
