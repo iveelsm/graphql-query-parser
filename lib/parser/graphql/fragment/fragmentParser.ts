@@ -1,14 +1,15 @@
 import { FragmentTemplate } from "../../../templates";
 import GraphQLParser from "../graphQLParser";
 
-export default class FragmentParser implements GraphQLParser<string, Array<FragmentTemplate>> {
+export default class FragmentParser implements GraphQLParser<string, FragmentTemplate[]> {
+  private fragmentNameRegex = /((.*?[\bfragment\b])[\s]{1,}([a-zA-Z]+)[\s]{1,}(.*?[\bon\b])[\s]{1,}([a-zA-Z]+)[\s]{0,}\{)/;
   private fragmentRegex = /((.*?[\bfragment\b])[\s]{1,}([a-zA-Z]+)[\s]{1,}(.*?[\bon\b])[\s]{1,}([a-zA-Z]+)[\s]{0,}\{)/g;
 
-  parse(data: string): Array<FragmentTemplate> {
+  public parse(data: string): FragmentTemplate[] {
     return this.parseFragments(data);
   }
 
-  private parseFragments(data: string): Array<FragmentTemplate> {
+  private parseFragments(data: string): FragmentTemplate[] {
     const match = data.match(this.fragmentRegex);
     if(match != null) {
       return match.map(fragmentIdentifier => {
@@ -45,7 +46,7 @@ export default class FragmentParser implements GraphQLParser<string, Array<Fragm
   }
 
   private buildTemplate(fragment: string, fragmentIdentifier: string): FragmentTemplate {
-    const key = this.fragmentRegex.exec(fragmentIdentifier);
+    const key = this.fragmentNameRegex.exec(fragmentIdentifier);
     return new FragmentTemplate(key[3], fragment);
   }
 }

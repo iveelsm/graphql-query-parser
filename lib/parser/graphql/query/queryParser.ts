@@ -1,18 +1,19 @@
 import { QueryTemplate } from "../../../templates";
 import GraphQLParser from "../graphQLParser";
 
-export default class QueryParser implements GraphQLParser<string, Array<QueryTemplate>> {
-  private queryRegex = /((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})\(([^\)]+)\)/g;
+export default class QueryParser implements GraphQLParser<string, QueryTemplate[]> {
+  private queryNameRegex = /((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/;
+  private queryRegex = /((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^\)]{0,})\)){0,}/g;
   private variableRegex = /(\$[a-zA-Z]+)/g;
 
-  parse(data: string): Array<QueryTemplate> {
+  public parse(data: string): QueryTemplate[] {
     return this.parseQueries(data);
   }
 
-  private parseQueries(data: string): Array<QueryTemplate> {
-    const match = data.match(this.queryRegex);
-    if(match !== null) {
-      return match.map(queryIdentifier => {
+  private parseQueries(data: string): QueryTemplate[] {
+    const matches = data.match(this.queryRegex);
+    if(matches !== null) {
+      return matches.map(queryIdentifier => {
         const query = this.parseQuery(data, queryIdentifier);
         return this.buildTemplate(query, queryIdentifier);
       });
@@ -46,11 +47,11 @@ export default class QueryParser implements GraphQLParser<string, Array<QueryTem
 
   private buildTemplate(query: string, queryIdentifier: string): QueryTemplate {
     const variables = this.parseVariables(query);
-    return new QueryTemplate(this.queryRegex.exec(queryIdentifier)[3], query, variables);
+    return new QueryTemplate(this.queryNameRegex.exec(queryIdentifier)[3], query, variables);
   }
 
 
-  private parseVariables(data: string): Array<string> {
+  private parseVariables(data: string): string[] {
     return [... new Set(data.match(this.variableRegex))];
   }
 }
