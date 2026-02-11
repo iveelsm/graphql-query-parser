@@ -1,0 +1,5 @@
+fragment FragmentTwo on FragmentableTypeTwo {
+  id
+  name
+  two
+}

@@ -1,0 +1,4 @@
+fragment UniqueFragment on FragmentableTypeThree {
+  id,
+  name
+}

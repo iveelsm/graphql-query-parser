@@ -1,0 +1,35 @@
+{
+  "name": "graphql-query-parser",
+  "repository": {
+    "gitlab": "https://gitlab.com/msleevi/graphql-query-parser/"
+  },
+  "version": "0.0.1",
+  "description": "A utility for parsing queries out of GraphQL files",
+  "main": "index.ts",
+  "scripts": {
+    "test": "nyc mocha test/**/*.ts",
+    "build": "npm run build:compile && npm run test && npm run build:dependency",
+    "build:compile": "tsc --project tsconfig.json",
+    "build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "graphql",
+    "parse",
+    "query"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.2",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
+  }
+}

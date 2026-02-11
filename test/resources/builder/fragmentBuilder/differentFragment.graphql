@@ -1,0 +1,4 @@
+fragment DifferentFragment on FragmentableTypeTwo {
+  id,
+  name
+}
