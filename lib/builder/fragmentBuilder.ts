@@ -1,4 +1,4 @@
-import { Cache } from "../cache";
+import { Cache } from "../cache/index.js";
 
 /**
  * The Fragment Builder will:
@@ -7,11 +7,11 @@ import { Cache } from "../cache";
  *   * Ignores implicit fragments
  */
 export default class FragmentBuilder {
-    private static fragmentRegex = /(.*[\.]{3,}\s{0,})([^on\s{1,}][a-zA-Z]+)/g;
+    private static fragmentRegex = /(.*[.]{3,}\s{0,})([^on\s{1,}][a-zA-Z]+)/g;
 
     /**
      * Builds the fragment result set
-     * 
+     *
      * @param query Query string to build fragments for
      * @param cache Cache containing the fragments
      */
@@ -28,7 +28,7 @@ export default class FragmentBuilder {
 
     private static addFragments(toMatch: string, results: FragmentResults[], cache: Cache): FragmentResults[] {
         const fragmentIdentifiers = toMatch.match(this.fragmentRegex);
-    
+
         if(fragmentIdentifiers) {
             fragmentIdentifiers.forEach(fragmentIdentifier => {
                 const fragmentName = this.getFragmentName(fragmentIdentifier);
@@ -39,11 +39,19 @@ export default class FragmentBuilder {
     }
 
     private static generateFragmentString(fragmentName: string, cache: Cache): string {
-        return cache.fragmentCache.get(fragmentName).apply();
+        const fragment = cache.fragmentCache.get(fragmentName);
+        if (!fragment) {
+            throw new Error(`Fragment not found in cache: ${fragmentName}`);
+        }
+        return fragment.apply();
     }
 
     private static getFragmentName(fragmentIdentifier: string): string {
-        return this.fragmentRegex.exec(fragmentIdentifier)[2];
+        const match = this.fragmentRegex.exec(fragmentIdentifier);
+        if (!match) {
+            throw new Error(`Invalid fragment identifier: ${fragmentIdentifier}`);
+        }
+        return match[2];
     }
 }
 

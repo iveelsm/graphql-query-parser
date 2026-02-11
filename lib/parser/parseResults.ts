@@ -1,4 +1,4 @@
-import { QueryTemplate, FragmentTemplate } from "../templates";
+import { QueryTemplate, FragmentTemplate } from "../templates/index.js";
 
 /**
  * This includes the results from the parsing as an object

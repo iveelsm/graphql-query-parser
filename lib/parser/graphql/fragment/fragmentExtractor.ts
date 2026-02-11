@@ -1,7 +1,7 @@
-import { FragmentTemplate } from '../../../templates';
-import GraphQLExtractor from '../graphQLExtractor';
-import FragmentParser from './fragmentParser';
-import GraphQLParser from '../graphQLParser';
+import { FragmentTemplate } from '../../../templates/index.js';
+import GraphQLExtractor from '../graphQLExtractor.js';
+import FragmentParser from './fragmentParser.js';
+import GraphQLParser from '../graphQLParser.js';
 
 /**
  * Extracts fragments from a potential input
@@ -15,7 +15,7 @@ export default class FragmentExtractor implements GraphQLExtractor<string, Fragm
 
   /**
    * Extracts one to many fragments via the parser
-   * 
+   *
    * @param input Input string to extract framgents from
    */
   public extract(input: string): FragmentTemplate[] {

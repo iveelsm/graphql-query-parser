@@ -1,4 +1,4 @@
-import GraphQLQueryBuilder from './graphQLQueryBuilder';
+import GraphQLQueryBuilder from './graphQLQueryBuilder.js';
 
 export {
     GraphQLQueryBuilder as default

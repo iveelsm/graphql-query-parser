@@ -1,5 +1,5 @@
-import { Cache, buildCache } from './cache';
-import IndexCache from './indexCache';
+import { Cache, buildCache } from './cache.js';
+import IndexCache from './indexCache.js';
 
 export {
     buildCache,

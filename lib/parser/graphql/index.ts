@@ -1,6 +1,6 @@
-import FragmentExtractor from './fragment/fragmentExtractor';
-import QueryExtractor from './query/queryExtractor';
-import GraphQLExtractor from './graphQLExtractor';
+import FragmentExtractor from './fragment/fragmentExtractor.js';
+import QueryExtractor from './query/queryExtractor.js';
+import GraphQLExtractor from './graphQLExtractor.js';
 
 export {
   FragmentExtractor,

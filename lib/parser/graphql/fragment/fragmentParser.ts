@@ -1,5 +1,5 @@
-import { FragmentTemplate } from "../../../templates";
-import GraphQLParser from "../graphQLParser";
+import { FragmentTemplate } from "../../../templates/index.js";
+import GraphQLParser from "../graphQLParser.js";
 
 /**
  * Parses potential fragment strings to determine if a fragment exists
@@ -10,7 +10,7 @@ export default class FragmentParser implements GraphQLParser<string, FragmentTem
 
   /**
    * Attempts to derive one or many fragment templates from an input string
-   * 
+   *
    * @param data String result to parse
    */
   public parse(data: string): FragmentTemplate[] {
@@ -38,7 +38,7 @@ export default class FragmentParser implements GraphQLParser<string, FragmentTem
     while(bracesSet.length > 0) {
       index++;
       const char = data[index];
-      fragment += char; 
+      fragment += char;
       switch(char) {
         case '{':
           bracesSet.push(char);
@@ -55,6 +55,9 @@ export default class FragmentParser implements GraphQLParser<string, FragmentTem
 
   private buildTemplate(fragment: string, fragmentIdentifier: string): FragmentTemplate {
     const key = this.fragmentNameRegex.exec(fragmentIdentifier);
+    if (!key) {
+      throw new Error(`Invalid fragment identifier: ${fragmentIdentifier}`);
+    }
     return new FragmentTemplate(key[3], fragment);
   }
 }

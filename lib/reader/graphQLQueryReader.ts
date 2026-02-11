@@ -1,19 +1,19 @@
-import UnsupportedTypeError from './errors/unsupportedTypeError';
-import DirectoryReader from './directory/directoryReader';
-import FileReader from './file/fileReader';
-import Reader from './reader';
+import UnsupportedTypeError from './errors/unsupportedTypeError.js';
+import DirectoryReader from './directory/directoryReader.js';
+import FileReader from './file/fileReader.js';
+import Reader from './reader.js';
 import * as fs from 'fs';
 
 /**
  * Flattens an array of arrays to a single array
- * 
+ *
  * @param arr Array of Arrays to flatten
  */
 function flatten<T>(arr: T[]): T[] {
     return arr.reduce(function flatReduce(flat: T[], toFlatten) {
         return flat.concat(
-            Array.isArray(toFlatten) 
-                ? flatten(toFlatten) 
+            Array.isArray(toFlatten)
+                ? flatten(toFlatten)
                 : toFlatten);
     }, []);
 }
@@ -22,9 +22,9 @@ function flatten<T>(arr: T[]): T[] {
  * Reads GraphQL files from the input path provided
  */
 export default class GraphQLQueryReader {
-    private fileReader: Reader<string, fs.ReadStream> 
-    private directoryReader: Reader<string, fs.ReadStream[]> 
-  
+    private fileReader: Reader<string, fs.ReadStream | null>
+    private directoryReader: Reader<string, fs.ReadStream[]>
+
     public constructor() {
         this.fileReader = new FileReader();
         this.directoryReader = new DirectoryReader();
@@ -33,13 +33,14 @@ export default class GraphQLQueryReader {
     /**
      * Reads all the file information from the input path provided.
      * Can return one or many results based on the type of path provided.
-     * 
-     * @param path Either a file identifier or directory for reading 
+     *
+     * @param path Either a file identifier or directory for reading
      */
     public read(path: string): fs.ReadStream[]  {
         const lstatResults = fs.lstatSync(path);
         if(lstatResults.isFile()) {
-            return [this.fileReader.read(path)];
+            const stream = this.fileReader.read(path);
+            return stream ? [stream] : [];
         } else if (lstatResults.isDirectory()) {
             return this.directoryReader.read(path);
         } else {
@@ -53,15 +54,15 @@ export default class GraphQLQueryReader {
     /**
      * Reads all the file information from the input paths provided.
      * Can return one or many results based on the type of paths provided.
-     * 
-     * @param path Many file identifiers or directories for reading 
+     *
+     * @param path Many file identifiers or directories for reading
      */
     public readMany(paths: string[]): fs.ReadStream[] {
         return paths
             .map(path => this.read(path))
             .reduce((flat, toFlatten) => {
-                return flat.concat(Array.isArray(toFlatten) 
-                    ? flatten(toFlatten) 
+                return flat.concat(Array.isArray(toFlatten)
+                    ? flatten(toFlatten)
                     : toFlatten);
             }, []);
     }

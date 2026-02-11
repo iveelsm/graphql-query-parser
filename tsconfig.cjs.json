@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/esm",
+    "outDir": "./dist/cjs",
     "rootDir": "./lib",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "noImplicitAny": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "target": "ES2022",
     "lib": ["ES2022"],
     "esModuleInterop": true,
