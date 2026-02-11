@@ -1,5 +1,5 @@
 import GraphQLQueryReader from './graphQLQueryReader';
 
 export {
-  GraphQLQueryReader as default
+    GraphQLQueryReader as default
 }

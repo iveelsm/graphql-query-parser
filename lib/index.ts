@@ -7,7 +7,7 @@ export {
 var start = new Date();
 console.log("FILE");
 
-(async function() {
+(async function execute() {
   await GraphQLQueryParser.parse('./test/resources/');
   var end = new Date();
   var interval = end.valueOf() - start.valueOf();

@@ -33,3 +33,11 @@ unit:
   artifacts:
     paths:
       - coverage/
+
+lint:lib:
+  stage: validate
+  script: npm run lint:lib
+
+lint:test:
+  stage: validate
+  script: npm run lint:test
