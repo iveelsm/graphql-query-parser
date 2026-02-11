@@ -8,13 +8,13 @@
 
 <p align="center">
   <a href="https://gitlab.com/msleevi/graphql-query-parser/pipelines">
-    <img src="https://gitlab.com/msleevi/graphql-query-parser/badges/develop/pipeline.svg" alt="Build Status">
+	<img src="https://gitlab.com/msleevi/graphql-query-parser/badges/develop/pipeline.svg" alt="Build Status">
   </a>
   | <a href="https://gitlab.com/msleevi/graphql-query-parser">
-    <img src="https://gitlab.com/msleevi/graphql-query-parser/badges/develop/coverage.svg" alt="Coverage">
-  </a> 
+	<img src="https://gitlab.com/msleevi/graphql-query-parser/badges/develop/coverage.svg" alt="Coverage">
+  </a>
   | <a href="https://www.npmjs.com/package/graphql-query-parser">
-    <img src="https://badge.fury.io/js/graphql-query-parser.svg" alt="NPM Version">
+	<img src="https://badge.fury.io/js/graphql-query-parser.svg" alt="NPM Version">
   </a>
 </p>
 

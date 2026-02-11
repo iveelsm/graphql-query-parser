@@ -1,13 +1,13 @@
 query QueryWithComplexFragments {
-    fragmentOne {
-        ...FragmentOne
-    }
+	fragmentOne {
+		...FragmentOne
+	}
 
-    fragmentTwo {
-        ...FragmentTwo
-    }
+	fragmentTwo {
+		...FragmentTwo
+	}
 
-    fragmentThree {
-        ...FragmentThree
-    }
+	fragmentThree {
+		...FragmentThree
+	}
 }

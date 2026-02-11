@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 interface Options {
-    encoding: BufferEncoding;
+	encoding: BufferEncoding;
 }
 
 /**
@@ -10,13 +10,13 @@ interface Options {
  * @param filePath File path to test
  */
 function isGraphQLFile(filePath: string): boolean {
-    const regex = /(?:\.([^.]+))?$/;
-    const match = regex.exec(filePath);
-    if (!match) {
-        return false;
-    }
-    const ext = match[1];
-    return ext === "graphqls" || ext === "graphql";
+	const regex = /(?:\.([^.]+))?$/;
+	const match = regex.exec(filePath);
+	if (!match) {
+		return false;
+	}
+	const ext = match[1];
+	return ext === "graphqls" || ext === "graphql";
 }
 
 /**
@@ -26,10 +26,10 @@ function isGraphQLFile(filePath: string): boolean {
  * @param options Options for the read stream creation
  */
 function readFile(filePath: string, options: Options): fs.ReadStream | null {
-    if (isGraphQLFile(filePath)) {
-        return fs.createReadStream(filePath, { encoding: options.encoding });
-    }
-    return null;
+	if (isGraphQLFile(filePath)) {
+		return fs.createReadStream(filePath, { encoding: options.encoding });
+	}
+	return null;
 }
 
 export { Options, readFile };

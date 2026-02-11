@@ -6,18 +6,18 @@ _files/Authors.graphql_
 
 ```graphql
 query GetAuthors {
-    authors {
-        ...AuthorFragment
-        books {
-            ...BookFragment
-        }
+  authors {
+    ...AuthorFragment
+    books {
+      ...BookFragment
     }
+  }
 }
 
 fragment AuthorFragment on Author {
-    id
-    name
-    email
+  id
+  name
+  email
 }
 ```
 
@@ -25,16 +25,16 @@ _files/Books.graphql_
 
 ```graphql
 query GetBooks {
-    books {
-        ...BookFragment
-    }
+  books {
+    ...BookFragment
+  }
 }
 
 fragment BookFragment on Book {
-    id
-    name
-    date
-    publisher
+  id
+  name
+  date
+  publisher
 }
 ```
 
@@ -42,12 +42,12 @@ _files/Bookstore.graphql_
 
 ```graphql
 query GetBooksFromBookstore {
-    topSellers {
-        ...BookFragment
-        authors {
-            ...AuthorFragment
-        }
+  topSellers {
+    ...BookFragment
+    authors {
+      ...AuthorFragment
     }
+  }
 }
 ```
 
@@ -57,14 +57,14 @@ We can then use the `graphql-query-parser` to extract the executable queries as 
 import { GraphQLQueryParser } from "graphql-query-parser";
 
 async function findQueries(directory) {
-    return await GraphQLQueryParser.parse(directory);
+  return await GraphQLQueryParser.parse(directory);
 }
 
 (async function () {
-    const results = await findQueries("files/");
-    results.forEach((result, idx) => {
-        console.log("\nQuery %s: \n%s", idx, result);
-    });
+  const results = await findQueries("files/");
+  results.forEach((result, idx) => {
+    console.log("\nQuery %s: \n%s", idx, result);
+  });
 });
 ```
 
@@ -74,10 +74,10 @@ We would see the following results:
 Query 0:
 query GetAuthors {
   authors {
-    ... AuthorFragment
-    books {
-      ... BookFragment
-    }
+	... AuthorFragment
+	books {
+	  ... BookFragment
+	}
   }
 }
 
@@ -99,7 +99,7 @@ fragment BookFragment on Book {
 Query 1:
 query GetBooks {
   books {
-    ... BookFragment
+	... BookFragment
   }
 }
 
@@ -115,10 +115,10 @@ fragment BookFragment on Book {
 Query 2:
 query GetBooksFromBookstore {
   topSellers {
-    ... BookFragment
-    authors {
-      ... AuthorFragment
-    }
+	... BookFragment
+	authors {
+	  ... AuthorFragment
+	}
   }
 }
 
