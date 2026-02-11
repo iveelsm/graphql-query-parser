@@ -1,14 +1,14 @@
 query QueryOne {
-  id
-  name
+    id
+    name
 }
 
 query QueryTwo {
-  id
-  name
+    id
+    name
 }
 
 query QueryThree {
-  id
-  name
+    id
+    name
 }

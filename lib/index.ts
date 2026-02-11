@@ -1,3 +1,3 @@
-import parse from './graphQLQueryParser.js';
+import parse from "./graphQLQueryParser.js";
 
 export default parse;

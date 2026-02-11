@@ -5,10 +5,18 @@ export default class FakeQueryTemplate {
     private query: string;
     private variables: string[];
 
-    constructor({ cacheKey, query, variables = [] }: { cacheKey: string; query: string; variables?: string[] }) {
+    constructor({
+        cacheKey,
+        query,
+        variables = [],
+    }: {
+        cacheKey: string;
+        query: string;
+        variables?: string[];
+    }) {
         this.cacheKey = cacheKey;
-        this.query =query;
-        this.variables = variables
+        this.query = query;
+        this.variables = variables;
     }
 
     create() {

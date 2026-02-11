@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
 interface Options {
     encoding: BufferEncoding;
@@ -16,7 +16,7 @@ function isGraphQLFile(filePath: string): boolean {
         return false;
     }
     const ext = match[1];
-    return (ext === "graphqls" || ext === "graphql");
+    return ext === "graphqls" || ext === "graphql";
 }
 
 /**
@@ -32,7 +32,4 @@ function readFile(filePath: string, options: Options): fs.ReadStream | null {
     return null;
 }
 
-export {
-    Options,
-    readFile
-}
+export { Options, readFile };

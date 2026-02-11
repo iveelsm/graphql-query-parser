@@ -1,5 +1,3 @@
-import GraphQLQueryReader from './graphQLQueryReader.js';
+import GraphQLQueryReader from "./graphQLQueryReader.js";
 
-export {
-    GraphQLQueryReader as default
-}
+export { GraphQLQueryReader as default };

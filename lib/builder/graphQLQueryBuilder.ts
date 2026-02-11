@@ -1,5 +1,5 @@
-import QueryBuilder from './queryBuilder.js';
-import { Cache } from '../cache/index.js';
+import { Cache } from "../cache/index.js";
+import QueryBuilder from "./queryBuilder.js";
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 
@@ -13,10 +13,13 @@ export default class GraphQLQueryBuilder {
      * @param cache Cache of queries and fragments
      * @param variables Variables to apply to queries
      */
-    public static build(cache: Cache, variables: Record<string, any>): string[] {
+    public static build(
+        cache: Cache,
+        variables: Record<string, any>,
+    ): string[] {
         const queries = [];
         const entries = cache.queryCache.cache.entries();
-        for(const entry of entries) {
+        for (const entry of entries) {
             queries.push(QueryBuilder.build(entry[1], cache, variables));
         }
         return queries;

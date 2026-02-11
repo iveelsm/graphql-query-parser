@@ -1,6 +1,6 @@
-import FragmentBuilder from "./fragmentBuilder.js";
+import { Cache } from "../cache/index.js";
 import { QueryTemplate } from "../templates/index.js";
-import { Cache } from '../cache/index.js';
+import FragmentBuilder from "./fragmentBuilder.js";
 import Results from "./results.js";
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
@@ -22,12 +22,16 @@ export default class QueryBuilder {
      * @param cache Cache of information with fragments and queries
      * @param variables Configured variable information that might yield a partial apply to the query
      */
-    public static build(query: QueryTemplate, cache: Cache, variables: Record<string, any>): string {
+    public static build(
+        query: QueryTemplate,
+        cache: Cache,
+        variables: Record<string, any>,
+    ): string {
         const results = new Results();
         const queryString = query.apply(variables);
         results.addQuery(query.cache(), queryString);
         const builtFragments = FragmentBuilder.build(queryString, cache);
-        builtFragments.forEach(fragment => {
+        builtFragments.forEach((fragment) => {
             results.addFragment(fragment.name, fragment.fragment);
         });
         return results.build();

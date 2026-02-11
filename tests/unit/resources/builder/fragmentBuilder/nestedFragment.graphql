@@ -1,5 +1,5 @@
 fragment NestedFragment on NestedType {
-  singleFragment {
-    ...SingleFragment
-  }
+    singleFragment {
+        ...SingleFragment
+    }
 }

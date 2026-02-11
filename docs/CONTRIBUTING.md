@@ -14,4 +14,4 @@ If we need more information from you, we'll let you know.
 
 ## Propose a Change
 
-If you would like to propose a change, feel free to open a Merge Request and submit the code change. 
+If you would like to propose a change, feel free to open a Merge Request and submit the code change.

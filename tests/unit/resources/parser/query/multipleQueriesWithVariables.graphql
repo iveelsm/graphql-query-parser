@@ -1,29 +1,29 @@
 query QueryOne($one: ID!, $oneTest: String) {
-  id
-  name
-
-  result(id: $one, test: $oneTest) {
     id
     name
-  }
+
+    result(id: $one, test: $oneTest) {
+        id
+        name
+    }
 }
 
 query QueryTwo($two: ID!, $twoTest: String) {
-  id
-  name
-
-  result(id: $two, test: $twoTest) {
     id
     name
-  }
+
+    result(id: $two, test: $twoTest) {
+        id
+        name
+    }
 }
 
-query QueryThree($three: ID!, $threeTest: String){
-  id
-  name
-
-  result(id: $three, test: $threeTest) {
+query QueryThree($three: ID!, $threeTest: String) {
     id
     name
-  }
+
+    result(id: $three, test: $threeTest) {
+        id
+        name
+    }
 }

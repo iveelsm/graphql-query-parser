@@ -1,12 +1,12 @@
 query GetBooks {
-  books {
-    ... BookFragment
-  }
+    books {
+        ...BookFragment
+    }
 }
 
 fragment BookFragment on Book {
-  id
-  name
-  date
-  publisher
+    id
+    name
+    date
+    publisher
 }

@@ -1,68 +1,70 @@
-Getting Started
-----
+## Getting Started
 
 To get started with this project, you likely already have a list of files that you want to parse, something like the following groups.
 
-*files/Authors.graphql*
+_files/Authors.graphql_
+
 ```graphql
 query GetAuthors {
-  authors {
-    ... AuthorFragment
-    books {
-      ... BookFragment
+    authors {
+        ...AuthorFragment
+        books {
+            ...BookFragment
+        }
     }
-  }
 }
 
 fragment AuthorFragment on Author {
-  id
-  name
-  email
+    id
+    name
+    email
 }
 ```
 
-*files/Books.graphql*
+_files/Books.graphql_
+
 ```graphql
 query GetBooks {
-  books {
-    ... BookFragment
-  }
+    books {
+        ...BookFragment
+    }
 }
 
 fragment BookFragment on Book {
-  id
-  name
-  date
-  publisher
+    id
+    name
+    date
+    publisher
 }
 ```
 
-*files/Bookstore.graphql*
+_files/Bookstore.graphql_
+
 ```graphql
 query GetBooksFromBookstore {
-  topSellers {
-    ... BookFragment
-    authors {
-      ... AuthorFragment
+    topSellers {
+        ...BookFragment
+        authors {
+            ...AuthorFragment
+        }
     }
-  }
 }
 ```
 
 We can then use the `graphql-query-parser` to extract the executable queries as follows.
 
 ```javascript
-import { GraphQLQueryParser } from 'graphql-query-parser';
+import { GraphQLQueryParser } from "graphql-query-parser";
 
 async function findQueries(directory) {
-  return await GraphQLQueryParser.parse(directory);
+    return await GraphQLQueryParser.parse(directory);
 }
 
-(async function() {
-  const results = await findQueries('files/');
-  results.forEach((result, idx) => {
-      console.log("\nQuery %s: \n%s", idx, result);
-  });
+(async function () {
+    const results = await findQueries("files/");
+    results.forEach((result, idx) => {
+        console.log("\nQuery %s: \n%s", idx, result);
+    });
 });
 ```
 
