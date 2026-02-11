@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import { ReadStreamParser } from "../../../lib/parser";
 import { createReadStream } from "../resourceReader";
@@ -13,7 +14,7 @@ describe("ReadStream Parser", function () {
                 baseResourceDir + "fragment/singleFragment.graphql",
             );
             const results = await parser.parse([stream]);
-            expect(results).to.have.length(1);
+            assert.strictEqual(results.length, 1);
         });
 
         it("handles many streams", async function () {
@@ -31,7 +32,7 @@ describe("ReadStream Parser", function () {
                 multipleFragmentStream,
                 multipleQueries,
             ]);
-            expect(results).to.have.length(3);
+            assert.strictEqual(results.length, 3);
         });
 
         it("handles queries", async function () {
@@ -49,7 +50,7 @@ describe("ReadStream Parser", function () {
                 singleQuery,
                 multipleQueries,
             ]);
-            expect(results).to.have.length(3);
+            assert.strictEqual(results.length, 3);
         });
 
         it("handles fragments", async function () {
@@ -63,7 +64,7 @@ describe("ReadStream Parser", function () {
                 singleFragmentStream,
                 multipleFragmentStream,
             ]);
-            expect(results).to.have.length(2);
+            assert.strictEqual(results.length, 2);
         });
 
         it("handles queries and fragments", async function () {
@@ -81,7 +82,7 @@ describe("ReadStream Parser", function () {
                 multipleFragmentStream,
                 multipleQueries,
             ]);
-            expect(results).to.have.length(3);
+            assert.strictEqual(results.length, 3);
         });
     });
 });

@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import FragmentParser from "../../../../../lib/parser/graphql/fragment/fragmentParser";
 import { readResource } from "../../../resourceReader";
@@ -14,7 +15,7 @@ describe("Fragment Parser", function () {
             );
             const results = parser.parse(singleFragment);
             const result = results[0];
-            expect(result.cache()).to.eql("SingleFragment");
+            assert.strictEqual(result.cache(), "SingleFragment");
         });
 
         it("handles many fragments", function () {
@@ -23,10 +24,10 @@ describe("Fragment Parser", function () {
             );
             const results = parser.parse(multipleFragments);
             const cacheKeys = results.map((result) => result.cache());
-            expect(cacheKeys).to.have.members([
+            assert.deepStrictEqual(cacheKeys.sort(), [
                 "FragmentOne",
-                "FragmentTwo",
                 "FragmentThree",
+                "FragmentTwo",
             ]);
         });
     });

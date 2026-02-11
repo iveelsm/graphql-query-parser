@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import FragmentBuilder from "../../../lib/builder/fragmentBuilder";
 import { FakeCacheBuilder } from "../fakes";
@@ -44,8 +45,8 @@ describe("Fragment Builder", function () {
                 queryWithSingleFragment,
                 cache,
             );
-            expect(result).to.have.length(1);
-            expect(result[0].name).to.eql("SingleFragment");
+            assert.strictEqual(result.length, 1);
+            assert.strictEqual(result[0].name, "SingleFragment");
         });
 
         it("builds many fragments", function () {
@@ -58,7 +59,7 @@ describe("Fragment Builder", function () {
                 queryWithManyFragments,
                 cache,
             );
-            expect(results).to.have.length(3);
+            assert.strictEqual(results.length, 3);
         });
 
         it("builds nested fragments", function () {
@@ -70,7 +71,7 @@ describe("Fragment Builder", function () {
                 queryWithNestedFragment,
                 cache,
             );
-            expect(results).to.have.length(2);
+            assert.strictEqual(results.length, 2);
         });
 
         it("does not add implicit fragments", function () {
@@ -81,13 +82,13 @@ describe("Fragment Builder", function () {
                 queryWithImplicitFragment,
                 cache,
             );
-            expect(results).to.have.length(0);
+            assert.strictEqual(results.length, 0);
         });
 
         it("returns empty if no fragments present", function () {
             const cache = new FakeCacheBuilder().build();
             const results = FragmentBuilder.build(queryWithoutFragment, cache);
-            expect(results).to.have.length(0);
+            assert.strictEqual(results.length, 0);
         });
     });
 });

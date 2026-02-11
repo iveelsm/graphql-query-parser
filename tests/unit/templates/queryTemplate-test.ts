@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it, beforeEach } from "node:test";
 
 import { QueryTemplate } from "../../../lib/templates";
 import { readResource } from "../resourceReader";
@@ -20,7 +21,7 @@ describe("Query Template", function () {
         it("applies variables if they exist", function () {
             const result = template.apply({ $id: 1, $test: '"name"' });
             const expected = readResource("templates/appliedVariables.graphql");
-            expect(result).to.eql(expected);
+            assert.strictEqual(result, expected);
         });
 
         it("ignores variables that do not exist", function () {
@@ -28,7 +29,7 @@ describe("Query Template", function () {
             const expected = readResource(
                 "templates/unappliedVariables.graphql",
             );
-            expect(result).to.eql(expected);
+            assert.strictEqual(result, expected);
         });
     });
 });

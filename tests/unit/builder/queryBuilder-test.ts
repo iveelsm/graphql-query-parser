@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import QueryBuilder from "../../../lib/builder/queryBuilder";
 import { FakeCacheBuilder, FakeQueryTemplate } from "../fakes";
@@ -42,7 +43,7 @@ describe("Query Builder", function () {
                 .withFragmentString("SingleFragment", singleFragment)
                 .build();
             const results = QueryBuilder.build(template.create(), cache, {});
-            expect(results).to.contain(singleFragment);
+            assert.ok(results.includes(singleFragment));
         });
 
         it("adds many fragments", function () {
@@ -58,10 +59,10 @@ describe("Query Builder", function () {
                 .withFragmentString("FragmentFour", fragmentFour)
                 .build();
             const results = QueryBuilder.build(template.create(), cache, {});
-            expect(results).to.contain(fragmentOne);
-            expect(results).to.contain(fragmentTwo);
-            expect(results).to.contain(fragmentThree);
-            expect(results).to.contain(fragmentFour);
+            assert.ok(results.includes(fragmentOne));
+            assert.ok(results.includes(fragmentTwo));
+            assert.ok(results.includes(fragmentThree));
+            assert.ok(results.includes(fragmentFour));
         });
 
         it("does not return duplicate fragments", function () {
@@ -77,10 +78,10 @@ describe("Query Builder", function () {
                 .withFragmentString("FragmentFour", fragmentFour)
                 .build();
             let results = QueryBuilder.build(template.create(), cache, {});
-            expect(results).to.contain(fragmentOne);
-            expect(results).to.contain(fragmentTwo);
+            assert.ok(results.includes(fragmentOne));
+            assert.ok(results.includes(fragmentTwo));
             results = results.replace(fragmentOne, " ");
-            expect(results).to.not.contain(fragmentOne);
+            assert.ok(!results.includes(fragmentOne));
         });
 
         it("adds the query", function () {
@@ -96,7 +97,7 @@ describe("Query Builder", function () {
                 .withFragmentString("FragmentFour", fragmentFour)
                 .build();
             const results = QueryBuilder.build(template.create(), cache, {});
-            expect(results).to.contain(complexFragmentsQuery);
+            assert.ok(results.includes(complexFragmentsQuery));
         });
     });
 });
