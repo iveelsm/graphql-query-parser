@@ -1,4 +1,4 @@
-import ParseResults from "./parseResults.js";
 import ReadStreamParser from "./readStreamParser.js";
 
-export { ReadStreamParser, ParseResults };
+export { ReadStreamParser };
+export type { default as ParseResults } from "./parseResults.js";

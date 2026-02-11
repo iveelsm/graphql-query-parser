@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import parse from "../../../lib";
 
@@ -8,6 +9,6 @@ const CURRENT_WORKING_DIRECTORY =
 describe("Bookstore Tests", function () {
     it("Identifies Queries", async function () {
         const results = await parse(CURRENT_WORKING_DIRECTORY + "/resources/");
-        expect(results.length).to.eql(3);
+        assert.strictEqual(results.length, 3);
     });
 });

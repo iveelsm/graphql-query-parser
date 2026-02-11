@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import GraphQLQueryBuilder from "../../../lib/builder";
 import { FakeCacheBuilder } from "../fakes";
@@ -34,7 +35,7 @@ describe("GraphQL Query Builder", function () {
                 .withFragmentString("FragmentFour", fragmentFour)
                 .build();
             const results = GraphQLQueryBuilder.build(cache, {});
-            expect(results).to.have.length(1);
+            assert.strictEqual(results.length, 1);
         });
 
         it("builds many queries", function () {
@@ -55,7 +56,7 @@ describe("GraphQL Query Builder", function () {
                 .withFragmentString("FragmentFour", fragmentFour)
                 .build();
             const results = GraphQLQueryBuilder.build(cache, {});
-            expect(results).to.have.length(2);
+            assert.strictEqual(results.length, 2);
         });
     });
 });

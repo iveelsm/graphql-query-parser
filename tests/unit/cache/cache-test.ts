@@ -1,6 +1,8 @@
-import { assert } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import { buildCache } from "../../../lib/cache";
+import type { FragmentTemplate, QueryTemplate } from "../../../lib/templates";
 import { FakeFragmentTemplate, FakeQueryTemplate } from "../fakes";
 import { readResource } from "../resourceReader";
 
@@ -37,7 +39,10 @@ describe("Cache", function () {
                 }).create(),
             ];
             const cache = buildCache(fragments, []);
-            assert(cache.fragmentCache.get("SingleFragment") != null);
+            assert.notStrictEqual(
+                cache.fragmentCache.get("SingleFragment"),
+                null,
+            );
         });
 
         it("adds a query", () => {
@@ -48,7 +53,10 @@ describe("Cache", function () {
                 }).create(),
             ];
             const cache = buildCache([], queries);
-            assert(cache.queryCache.get("QueryWithComplexFragments") != null);
+            assert.notStrictEqual(
+                cache.queryCache.get("QueryWithComplexFragments"),
+                null,
+            );
         });
 
         it("adds many fragments", () => {
@@ -71,10 +79,16 @@ describe("Cache", function () {
                 }).create(),
             ];
             const cache = buildCache(fragments, []);
-            assert(cache.fragmentCache.get("SingleFragment") != null);
-            assert(cache.fragmentCache.get("FragmentOne") != null);
-            assert(cache.fragmentCache.get("FragmentTwo") != null);
-            assert(cache.fragmentCache.get("FragmentThree") != null);
+            assert.notStrictEqual(
+                cache.fragmentCache.get("SingleFragment"),
+                null,
+            );
+            assert.notStrictEqual(cache.fragmentCache.get("FragmentOne"), null);
+            assert.notStrictEqual(cache.fragmentCache.get("FragmentTwo"), null);
+            assert.notStrictEqual(
+                cache.fragmentCache.get("FragmentThree"),
+                null,
+            );
         });
 
         it("adds many queries", function () {
@@ -93,30 +107,38 @@ describe("Cache", function () {
                 }).create(),
             ];
             const cache = buildCache([], queries);
-            assert(cache.queryCache.get("QueryWithComplexFragments") != null);
-            assert(cache.queryCache.get("QueryWithSingleFragment") != null);
-            assert(cache.queryCache.get("QueryWithDuplicateFragments") != null);
+            assert.notStrictEqual(
+                cache.queryCache.get("QueryWithComplexFragments"),
+                null,
+            );
+            assert.notStrictEqual(
+                cache.queryCache.get("QueryWithSingleFragment"),
+                null,
+            );
+            assert.notStrictEqual(
+                cache.queryCache.get("QueryWithDuplicateFragments"),
+                null,
+            );
         });
 
-        // it("throws on null value for cache key", function () {
-        //     const queries = [
-        //         new FakeQueryTemplate({
-        //             cacheKey: "InvalidKey",
-        //             query: complexFragmentsQuery,
-        //         }).create(),
-        //     ];
+        it("throws on null value for cache key", function () {
+            // Create a mock template that returns null for cache()
+            const mockQuery: QueryTemplate = {
+                cache: () => null,
+                query: complexFragmentsQuery,
+                variables: [],
+                apply: () => complexFragmentsQuery,
+            };
 
-        //     const fragments = [
-        //         new FakeFragmentTemplate({
-        //             cacheKey: "InvalidKey",
-        //             fragment: singleFragment,
-        //         }).create(),
-        //     ];
+            const mockFragment: FragmentTemplate = {
+                cache: () => null,
+                fragment: singleFragment,
+            };
 
-        //     assert.throw(
-        //         () => buildCache(fragments, queries),
-        //         "Cache Key can not be Null",
-        //     );
-        // });
+            assert.throws(
+                () => buildCache([mockFragment], [mockQuery]),
+                /Cache Key can not be Null/,
+            );
+        });
     });
 });

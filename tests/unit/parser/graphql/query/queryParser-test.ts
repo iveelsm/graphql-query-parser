@@ -1,4 +1,5 @@
-import { expect } from "chai";
+import assert from "node:assert";
+import { describe, it } from "node:test";
 
 import QueryParser from "../../../../../lib/parser/graphql/query/queryParser";
 import { readResource } from "../../../resourceReader";
@@ -14,7 +15,7 @@ describe("Query Parser", function () {
             );
             const results = parser.parse(singleQuery);
             const result = results[0];
-            expect(result.cache()).to.eql("SingleQuery");
+            assert.strictEqual(result.cache(), "SingleQuery");
         });
 
         it("handles many queries", async function () {
@@ -23,10 +24,10 @@ describe("Query Parser", function () {
             );
             const results = parser.parse(multipleQueries);
             const cacheKeys = results.map((result) => result.cache());
-            expect(cacheKeys).to.have.members([
+            assert.deepStrictEqual(cacheKeys.sort(), [
                 "QueryOne",
-                "QueryTwo",
                 "QueryThree",
+                "QueryTwo",
             ]);
         });
 
@@ -36,8 +37,8 @@ describe("Query Parser", function () {
             );
             const results = parser.parse(singleQuery);
             const result = results[0];
-            expect(result.cache()).to.eql("SingleQueryWithVariables");
-            expect(result.variables).to.eql(["$id", "$test"]);
+            assert.strictEqual(result.cache(), "SingleQueryWithVariables");
+            assert.deepStrictEqual(result.variables, ["$id", "$test"]);
         });
 
         it("handles many queries with variables", async function () {
@@ -46,13 +47,13 @@ describe("Query Parser", function () {
             );
             const results = parser.parse(multipleQueries);
             const cacheKeys = results.map((result) => result.cache());
-            expect(cacheKeys).to.have.members([
+            assert.deepStrictEqual(cacheKeys.sort(), [
                 "QueryOne",
-                "QueryTwo",
                 "QueryThree",
+                "QueryTwo",
             ]);
             const variables = results.map((result) => result.variables);
-            expect(variables).to.have.length(3);
+            assert.strictEqual(variables.length, 3);
         });
     });
 });
