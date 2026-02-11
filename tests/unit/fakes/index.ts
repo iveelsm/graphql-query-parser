@@ -1,9 +1,5 @@
-import FakeFragmentTemplate from './fakeFragmentTemplate';
-import FakeQueryTemplate from './fakeQueryTemplate';
-import FakeCacheBuilder from './fakeCacheBuilder';
+import FakeCacheBuilder from "./fakeCacheBuilder";
+import FakeFragmentTemplate from "./fakeFragmentTemplate";
+import FakeQueryTemplate from "./fakeQueryTemplate";
 
-export {
-    FakeCacheBuilder,
-    FakeFragmentTemplate,
-    FakeQueryTemplate
-}
+export { FakeCacheBuilder, FakeFragmentTemplate, FakeQueryTemplate };

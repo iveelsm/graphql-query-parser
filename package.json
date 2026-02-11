@@ -1,74 +1,75 @@
 {
-  "name": "graphql-query-parser",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/msleevi/graphql-query-parser.git"
-  },
-  "version": "1.0.0",
-  "description": "A utility for parsing queries out of GraphQL files",
-  "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      },
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      }
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "scripts": {
-    "build": "npm run clean && npm run build:compile && npm run test",
-    "build:compile": "npm run build:esm && npm run build:cjs && npm run build:cjs-package",
-    "build:esm": "tsc --project tsconfig.json",
-    "build:cjs": "tsc --project tsconfig.cjs.json",
-    "build:cjs-package": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
-    "build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
-    "clean": "rm -rf dist",
-    "lint": "eslint lib tests",
-    "lint:fix": "eslint lib tests --fix",
-    "coverage": "nyc npm run test",
-    "test": "npm run unit && npm run integration",
-    "unit": "mocha --config tests/unit/.mocharc.json",
-    "integration": "mocha --config tests/integration/.mocharc.json",
-    "prepublishOnly": "npm run build"
-  },
-  "keywords": [
-    "graphql",
-    "parse",
-    "query"
-  ],
-  "author": "Michael Sleevi <michael.sleevi@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/chai": "^5.0.1",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^22.12.0",
-    "chai": "^5.1.2",
-    "dependency-cruiser": "^16.9.0",
-    "eslint": "^9.19.0",
-    "eslint-plugin-mocha": "^10.5.0",
-    "globals": "^15.14.0",
-    "mocha": "^11.1.0",
-    "nyc": "^17.1.0",
-    "tsx": "^4.21.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.22.0"
-  },
-  "bugs": {
-    "url": "https://github.com/msleevi/graphql-query-parser/issues"
-  },
-  "homepage": "https://github.com/msleevi/graphql-query-parser#readme"
+    "name": "graphql-query-parser",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/msleevi/graphql-query-parser.git"
+    },
+    "version": "1.0.0",
+    "description": "A utility for parsing queries out of GraphQL files",
+    "type": "module",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "types": "./dist/esm/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/esm/index.d.ts",
+                "default": "./dist/esm/index.js"
+            },
+            "require": {
+                "types": "./dist/cjs/index.d.ts",
+                "default": "./dist/cjs/index.js"
+            }
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "scripts": {
+        "build": "npm run clean && npm run build:compile && npm run test",
+        "build:compile": "npm run build:esm && npm run build:cjs && npm run build:cjs-package",
+        "build:esm": "tsc --project tsconfig.json",
+        "build:cjs": "tsc --project tsconfig.cjs.json",
+        "build:cjs-package": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+        "build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
+        "clean": "rm -rf dist",
+        "lint": "prettier --check . && eslint .",
+        "lint:fix": "prettier --write . && eslint . --fix",
+        "coverage": "nyc npm run test",
+        "test": "npm run unit && npm run integration",
+        "unit": "mocha --config tests/unit/.mocharc.json",
+        "integration": "mocha --config tests/integration/.mocharc.json"
+    },
+    "keywords": [
+        "graphql",
+        "parse",
+        "query"
+    ],
+    "author": "Michael Sleevi <michael.sleevi@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@eslint/js": "^9.19.0",
+        "@types/chai": "^5.0.1",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "^22.12.0",
+        "chai": "^5.1.2",
+        "dependency-cruiser": "^16.9.0",
+        "eslint": "^9.19.0",
+        "eslint-plugin-mocha": "^10.5.0",
+        "eslint-plugin-perfectionist": "^5.5.0",
+        "globals": "^15.14.0",
+        "mocha": "^11.1.0",
+        "nyc": "^17.1.0",
+        "prettier": "^3.8.1",
+        "tsx": "^4.21.0",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.22.0"
+    },
+    "bugs": {
+        "url": "https://github.com/msleevi/graphql-query-parser/issues"
+    },
+    "homepage": "https://github.com/msleevi/graphql-query-parser#readme"
 }

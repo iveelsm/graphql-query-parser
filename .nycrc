@@ -1,9 +1,9 @@
 {
-  "extension": [".ts"],
-  "include": ["lib/**/*.ts"],
-  "exclude": ["**/*.d.ts", "tests/**"],
-  "reporter": ["text", "lcov", "html"],
-  "all": true,
-  "sourceMap": true,
-  "instrument": true
+    "extension": [".ts"],
+    "include": ["lib/**/*.ts"],
+    "exclude": ["**/*.d.ts", "tests/**"],
+    "reporter": ["text", "lcov", "html"],
+    "all": true,
+    "sourceMap": true,
+    "instrument": true
 }

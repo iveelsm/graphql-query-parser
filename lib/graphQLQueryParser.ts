@@ -1,11 +1,12 @@
-import { ReadStreamParser, ParseResults } from './parser/index.js';
-import GraphQLQueryBuilder from './builder/index.js';
-import GraphQLQueryReader from './reader/index.js';
-import { buildCache } from './cache/index.js';
-import { ReadStream } from 'fs';
+import { ReadStream } from "fs";
 
-type Path = string | string[]
-type Variables = Record<string, unknown>
+import GraphQLQueryBuilder from "./builder/index.js";
+import { buildCache } from "./cache/index.js";
+import { ReadStreamParser, ParseResults } from "./parser/index.js";
+import GraphQLQueryReader from "./reader/index.js";
+
+type Path = string | string[];
+type Variables = Record<string, unknown>;
 
 function isString(x: Path): boolean {
     return typeof x === "string";
@@ -19,11 +20,20 @@ function isString(x: Path): boolean {
  * @param paths Paths to parse information from
  * @param variables Variables to apply to the queries
  */
-async function parse(paths: Path, variables: Variables = {}): Promise<string[]> {
+async function parse(
+    paths: Path,
+    variables: Variables = {},
+): Promise<string[]> {
     const streams = read(paths, new GraphQLQueryReader());
-    const results = await Promise.all(parseStreams(streams, new ReadStreamParser()));
-    const fragments = results.map(x => x.fragmentResults).reduce((acc, x) => acc.concat(...x), []);
-    const queries = results.map(x => x.queryResults).reduce((acc, x) => acc.concat(...x), [])
+    const results = await Promise.all(
+        parseStreams(streams, new ReadStreamParser()),
+    );
+    const fragments = results
+        .map((x) => x.fragmentResults)
+        .reduce((acc, x) => acc.concat(...x), []);
+    const queries = results
+        .map((x) => x.queryResults)
+        .reduce((acc, x) => acc.concat(...x), []);
     const cache = buildCache(fragments, queries);
     return GraphQLQueryBuilder.build(cache, variables);
 }
@@ -35,9 +45,9 @@ async function parse(paths: Path, variables: Variables = {}): Promise<string[]> 
  * @param reader Reads the results from the path information provided
  */
 function read(paths: Path, reader: GraphQLQueryReader): ReadStream[] {
-    return (isString(paths))
-        ? reader.read((paths as string))
-        : reader.readMany((paths as string[]));
+    return isString(paths)
+        ? reader.read(paths as string)
+        : reader.readMany(paths as string[]);
 }
 
 /**
@@ -46,7 +56,10 @@ function read(paths: Path, reader: GraphQLQueryReader): ReadStream[] {
  * @param streams Streams to parse from
  * @param parser Parser to use when finding data from the streams
  */
-function parseStreams(streams: ReadStream[], parser: ReadStreamParser): Promise<ParseResults>[] {
+function parseStreams(
+    streams: ReadStream[],
+    parser: ReadStreamParser,
+): Promise<ParseResults>[] {
     return parser.parse(streams);
 }
 

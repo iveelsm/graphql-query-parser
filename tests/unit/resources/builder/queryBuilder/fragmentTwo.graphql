@@ -1,5 +1,5 @@
 fragment FragmentTwo on FragmentableTypeTwo {
-  id
-  name
-  two
+    id
+    name
+    two
 }

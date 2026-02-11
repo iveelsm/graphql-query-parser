@@ -1,4 +1,4 @@
 fragment DifferentFragment on FragmentableTypeTwo {
-  id,
-  name
+    id
+    name
 }

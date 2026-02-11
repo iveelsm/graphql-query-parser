@@ -1,9 +1,9 @@
 query SingleQueryWithVariables {
-  id
-  name
-
-  result(id: 1, test: "name") {
     id
     name
-  }
+
+    result(id: 1, test: "name") {
+        id
+        name
+    }
 }

@@ -18,8 +18,7 @@
   </a>
 </p>
 
-Installation
-----
+## Installation
 
 Install with npm globally:
 
@@ -33,9 +32,8 @@ or as a dependency for your project:
 $ npm install graphql-query-parser
 ```
 
-Links
------
+## Links
 
-* [Examples](./docs/EXAMPLES.md)
-* [Contributing](./docs/CONTRIBUTING.md)
-* [Changelog](./docs/CHANGELOG.md)
+- [Examples](./docs/EXAMPLES.md)
+- [Contributing](./docs/CONTRIBUTING.md)
+- [Changelog](./docs/CHANGELOG.md)
