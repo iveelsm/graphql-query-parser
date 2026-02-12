@@ -53,7 +53,7 @@
 	"devDependencies": {
 		"@eslint/js": "^9.19.0",
 		"@types/node": "^24.0.0",
-		"dependency-cruiser": "^16.9.0",
+		"dependency-cruiser": "^17.0.0",
 		"eslint": "^9.19.0",
 		"eslint-plugin-perfectionist": "^5.5.0",
 		"globals": "^15.14.0",
