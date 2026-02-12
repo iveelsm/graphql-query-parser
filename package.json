@@ -29,7 +29,7 @@
 		"node": ">=18.0.0"
 	},
 	"scripts": {
-		"build": "npm run clean && npm run build:compile && npm run test",
+		"build": "npm run clean && npm run build:compile",
 		"build:compile": "npm run build:esm && npm run build:cjs && npm run build:cjs-package",
 		"build:esm": "tsc --project tsconfig.json",
 		"build:cjs": "tsc --project tsconfig.cjs.json",
