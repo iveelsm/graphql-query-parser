@@ -8,7 +8,7 @@ If you have a question about using GraphQL Query Parser, open an issue under the
 
 ## I Found a Bug
 
-If you've found a bug in this project, create a [new issue](https://gitlab.com/msleevi/graphql-query-parser/issues/new). If you can fix the bug yourself, feel free to create a [pull request](#propose-a-change) thereafter.
+If you've found a bug in this project, create a [new issue](https://github.com/iveelsm/graphql-query-parser/issues/new). If you can fix the bug yourself, feel free to create a [pull request](#propose-a-change) thereafter.
 
 If we need more information from you, we'll let you know.
 
