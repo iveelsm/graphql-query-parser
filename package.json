@@ -1,39 +1,42 @@
 {
 	"name": "graphql-query-parser",
+	"description": "A utility for parsing queries out of GraphQL files",
+	"author": "Mikey Sleevi <development@frogman.simplelogin.com>",
+	"version": "0.0.2",
+	"license": "MIT",
+	"type": "module",
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"keywords": [
+		"graphql",
+		"parse",
+		"query"
+	],
+	"homepage": "https://github.com/iveelsm/graphql-query-parser#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/msleevi/graphql-query-parser.git"
+		"url": "git+https://github.com/iveelsm/graphql-query-parser.git"
 	},
-	"version": "0.0.2",
-	"description": "A utility for parsing queries out of GraphQL files",
-	"type": "module",
-	"main": "./dist/cjs/index.js",
-	"module": "./dist/esm/index.js",
-	"types": "./dist/esm/index.d.ts",
-	"exports": {
-		".": {
-			"import": {
-				"types": "./dist/esm/index.d.ts",
-				"default": "./dist/esm/index.js"
-			},
-			"require": {
-				"types": "./dist/cjs/index.d.ts",
-				"default": "./dist/cjs/index.js"
-			}
-		}
+	"bugs": {
+		"url": "https://github.com/iveelsm/graphql-query-parser/issues"
 	},
 	"files": [
 		"dist"
 	],
-	"engines": {
-		"node": ">=18.0.0"
+	"sideEffects": false,
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
 	},
 	"scripts": {
 		"build": "npm run clean && npm run build:compile",
-		"build:compile": "npm run build:esm",
-		"build:esm": "tsc --project tsconfig.json",
-		"build:cjs": "tsc --project tsconfig.cjs.json",
-		"build:cjs-package": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+		"build:compile": "tsc --project tsconfig.json",
 		"build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
 		"clean": "rm -rf dist",
 		"lint": "prettier --check . && eslint .",
@@ -43,13 +46,6 @@
 		"unit": "node --import tsx --test tests/unit/**/*-test.ts",
 		"integration": "node --import tsx --test tests/integration/**/*-test.ts"
 	},
-	"keywords": [
-		"graphql",
-		"parse",
-		"query"
-	],
-	"author": "Mikey Sleevi <development@frogman.simplelogin.com>",
-	"license": "MIT",
 	"devDependencies": {
 		"@eslint/js": "^9.19.0",
 		"@tsconfig/recommended": "^1.0.13",
@@ -63,9 +59,5 @@
 		"tsx": "^4.21.0",
 		"typescript": "^5.7.3",
 		"typescript-eslint": "^8.22.0"
-	},
-	"bugs": {
-		"url": "https://github.com/msleevi/graphql-query-parser/issues"
-	},
-	"homepage": "https://github.com/msleevi/graphql-query-parser#readme"
+	}
 }
