@@ -7,14 +7,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/msleevi/graphql-query-parser/actions/workflows/build.yml">
-	<img src="https://github.com/msleevi/graphql-query-parser/actions/workflows/build.yml/badge.svg" alt="Build Status">
+  <a href="https://github.com/iveelsm/graphql-query-parser/actions/workflows/build.yml">
+	  <img src="https://github.com/iveelsm/graphql-query-parser/actions/workflows/build.yml/badge.svg" alt="Build Status">
   </a>
-  | <a href="https://codecov.io/gh/msleevi/graphql-query-parser">
-	<img src="https://codecov.io/gh/msleevi/graphql-query-parser/graph/badge.svg" alt="Coverage">
+  | <a href="https://codecov.io/gh/iveelsm/graphql-query-parser">
+	  <img src="https://codecov.io/gh/iveelsm/graphql-query-parser/graph/badge.svg" alt="Coverage">
   </a>
   | <a href="https://www.npmjs.com/package/graphql-query-parser">
-	<img src="https://badge.fury.io/js/graphql-query-parser.svg" alt="NPM Version">
+	  <img src="https://badge.fury.io/js/graphql-query-parser.svg" alt="NPM Version">
   </a>
 </p>
 
