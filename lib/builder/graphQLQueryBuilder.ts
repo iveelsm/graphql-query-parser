@@ -1,5 +1,5 @@
-import { Cache } from "../cache/index.js";
-import QueryBuilder from "./queryBuilder.js";
+import type { Cache } from "../cache/index.ts";
+import QueryBuilder from "./queryBuilder.ts";
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 

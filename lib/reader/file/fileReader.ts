@@ -1,7 +1,8 @@
 import * as fs from "fs";
 
-import Reader from "../reader.js";
-import { readFile, Options } from "../readFile.js";
+import type Reader from "../reader.ts";
+import { readFile } from "../readFile.ts";
+import type { Options } from "../readFile.ts";
 
 /**
  * Reads from a file and opens a [[ReadStream]]

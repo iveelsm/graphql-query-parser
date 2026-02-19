@@ -1,5 +1,5 @@
-import { FragmentTemplate } from "../../../templates/index.js";
-import GraphQLParser from "../graphQLParser.js";
+import { FragmentTemplate } from "../../../templates/index.ts";
+import type GraphQLParser from "../graphQLParser.ts";
 
 /**
  * Parses potential fragment strings to determine if a fragment exists

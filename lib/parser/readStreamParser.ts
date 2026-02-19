@@ -1,8 +1,8 @@
 import { ReadStream } from "fs";
 
-import { QueryExtractor, FragmentExtractor } from "./graphql/index.js";
-import Parser from "./parser.js";
-import ParseResults from "./parseResults.js";
+import { QueryExtractor, FragmentExtractor } from "./graphql/index.ts";
+import type Parser from "./parser.ts";
+import type ParseResults from "./parseResults.ts";
 
 /**
  * Parses results from a ReadStream

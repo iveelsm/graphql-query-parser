@@ -1,5 +1,5 @@
-import { QueryTemplate, FragmentTemplate } from "../templates/index.js";
-import IndexCache from "./indexCache.js";
+import { QueryTemplate, FragmentTemplate } from "../templates/index.ts";
+import IndexCache from "./indexCache.ts";
 
 /**
  * Cache is a container for all queries and framgnet chunks
@@ -59,4 +59,5 @@ function buildCache(
 	return cache;
 }
 
-export { Cache, buildCache };
+export { buildCache };
+export type { Cache };

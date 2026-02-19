@@ -1,7 +1,7 @@
-import { Cache } from "../cache/index.js";
-import { QueryTemplate } from "../templates/index.js";
-import FragmentBuilder from "./fragmentBuilder.js";
-import Results from "./results.js";
+import type { Cache } from "../cache/index.ts";
+import { QueryTemplate } from "../templates/index.ts";
+import FragmentBuilder from "./fragmentBuilder.ts";
+import Results from "./results.ts";
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 
