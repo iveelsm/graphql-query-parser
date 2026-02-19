@@ -1,5 +1,5 @@
-import { QueryTemplate } from "../../../templates/index.js";
-import GraphQLParser from "../graphQLParser.js";
+import { QueryTemplate } from "../../../templates/index.ts";
+import type GraphQLParser from "../graphQLParser.ts";
 
 /**
  * Parses query files for by converting them into [[QueryTemplate]]s

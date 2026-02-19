@@ -1,9 +1,9 @@
 import * as fs from "fs";
 
-import DirectoryReader from "./directory/directoryReader.js";
-import UnsupportedTypeError from "./errors/unsupportedTypeError.js";
-import FileReader from "./file/fileReader.js";
-import Reader from "./reader.js";
+import DirectoryReader from "./directory/directoryReader.ts";
+import UnsupportedTypeError from "./errors/unsupportedTypeError.ts";
+import FileReader from "./file/fileReader.ts";
+import type Reader from "./reader.ts";
 
 /**
  * Flattens an array of arrays to a single array

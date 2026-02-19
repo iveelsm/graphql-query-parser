@@ -1,7 +1,7 @@
-import { FragmentTemplate } from "../../../templates/index.js";
-import GraphQLExtractor from "../graphQLExtractor.js";
-import GraphQLParser from "../graphQLParser.js";
-import FragmentParser from "./fragmentParser.js";
+import { FragmentTemplate } from "../../../templates/index.ts";
+import type GraphQLExtractor from "../graphQLExtractor.ts";
+import type GraphQLParser from "../graphQLParser.ts";
+import FragmentParser from "./fragmentParser.ts";
 
 /**
  * Extracts fragments from a potential input

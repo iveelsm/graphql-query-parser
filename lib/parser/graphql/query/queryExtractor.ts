@@ -1,6 +1,6 @@
-import { QueryTemplate } from "../../../templates/index.js";
-import GraphQLExtractor from "../graphQLExtractor.js";
-import QueryParser from "./queryParser.js";
+import { QueryTemplate } from "../../../templates/index.ts";
+import type GraphQLExtractor from "../graphQLExtractor.ts";
+import QueryParser from "./queryParser.ts";
 
 /**
  * Extracts the Query infroamtion from a given input

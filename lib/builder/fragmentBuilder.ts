@@ -1,4 +1,4 @@
-import { Cache } from "../cache/index.js";
+import type { Cache } from "../cache/index.ts";
 
 /**
  * The Fragment Builder will:

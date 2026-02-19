@@ -1,9 +1,10 @@
 import { ReadStream } from "fs";
 
-import GraphQLQueryBuilder from "./builder/index.js";
-import { buildCache } from "./cache/index.js";
-import { ReadStreamParser, ParseResults } from "./parser/index.js";
-import GraphQLQueryReader from "./reader/index.js";
+import GraphQLQueryBuilder from "./builder/index.ts";
+import { buildCache } from "./cache/index.ts";
+import { ReadStreamParser } from "./parser/index.ts";
+import type { ParseResults } from "./parser/index.ts";
+import GraphQLQueryReader from "./reader/index.ts";
 
 type Path = string | string[];
 type Variables = Record<string, unknown>;

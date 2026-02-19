@@ -1,4 +1,4 @@
-import FragmentTemplate from "./fragmentTemplate.js";
-import QueryTemplate from "./queryTemplate.js";
+import FragmentTemplate from "./fragmentTemplate.ts";
+import QueryTemplate from "./queryTemplate.ts";
 
 export { FragmentTemplate, QueryTemplate };

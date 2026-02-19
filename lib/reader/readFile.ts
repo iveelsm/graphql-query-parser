@@ -32,4 +32,5 @@ function readFile(filePath: string, options: Options): fs.ReadStream | null {
 	return null;
 }
 
-export { Options, readFile };
+export { readFile };
+export type { Options };
