@@ -23,7 +23,8 @@ export default class Results {
 	public addQuery(identifier: string, query: string): Results {
 		if (!this.currentTemplates.query.has(identifier)) {
 			this.currentTemplates.query.add(identifier);
-			this.result += query += "\n\n";
+			this.result += query;
+			this.result += "\n\n";
 		}
 		return this;
 	}
@@ -37,7 +38,8 @@ export default class Results {
 	public addFragment(identifier: string, fragment: string): Results {
 		if (!this.currentTemplates.fragment.has(identifier)) {
 			this.currentTemplates.fragment.add(identifier);
-			this.result += fragment += "\n\n";
+			this.result += fragment;
+			this.result += "\n\n";
 		}
 		return this;
 	}
