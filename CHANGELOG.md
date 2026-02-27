@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/iveelsm/graphql-query-parser/compare/v0.1.0...v0.1.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* Fix concatenating assign and increment ([#30](https://github.com/iveelsm/graphql-query-parser/issues/30)) ([509ba60](https://github.com/iveelsm/graphql-query-parser/commit/509ba609c81c9dad22e12b2f04ef1e1bcc698468))
+
 ## 0.1.0 (2026-02-19)
 
 
