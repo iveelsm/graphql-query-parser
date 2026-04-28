@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/iveelsm/graphql-query-parser/compare/v0.1.1...v0.1.2) (2026-04-28)
+
+
+### Bug Fixes
+
+* Remove NPM auth token patch ([#62](https://github.com/iveelsm/graphql-query-parser/issues/62)) ([054dd8d](https://github.com/iveelsm/graphql-query-parser/commit/054dd8dd06f3b157732e598d1db64f4201c73a52))
+* Update release please ([#60](https://github.com/iveelsm/graphql-query-parser/issues/60)) ([4189cd4](https://github.com/iveelsm/graphql-query-parser/commit/4189cd41cb2b11ec1f72c426c1fe0e61bcf2f0a3))
+
 ## [0.1.1](https://github.com/iveelsm/graphql-query-parser/compare/v0.1.0...v0.1.1) (2026-02-27)
 
 
