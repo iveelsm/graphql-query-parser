@@ -1,4 +1,4 @@
-import { ReadStream } from "fs";
+import { ReadStream } from "node:fs";
 
 import GraphQLQueryBuilder from "./builder/index.ts";
 import { buildCache } from "./cache/index.ts";

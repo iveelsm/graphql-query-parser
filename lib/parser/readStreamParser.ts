@@ -1,4 +1,4 @@
-import { ReadStream } from "fs";
+import { ReadStream } from "node:fs";
 
 import { QueryExtractor, FragmentExtractor } from "./graphql/index.ts";
 import type Parser from "./parser.ts";
