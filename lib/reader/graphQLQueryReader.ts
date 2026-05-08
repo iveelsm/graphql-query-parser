@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from "node:fs";
 
 import DirectoryReader from "./directory/directoryReader.ts";
 import UnsupportedTypeError from "./errors/unsupportedTypeError.ts";
