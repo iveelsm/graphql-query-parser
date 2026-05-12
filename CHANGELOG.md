@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/iveelsm/graphql-query-parser/compare/v0.1.2...v0.1.3) (2026-05-12)
+
+
+### Bug Fixes
+
+* Establish tighter restrictions on actions versioning ([#69](https://github.com/iveelsm/graphql-query-parser/issues/69)) ([76e45b0](https://github.com/iveelsm/graphql-query-parser/commit/76e45b06fcf0d221f90d4752a025a33223110b14))
+
 ## [0.1.2](https://github.com/iveelsm/graphql-query-parser/compare/v0.1.1...v0.1.2) (2026-04-28)
 
 
