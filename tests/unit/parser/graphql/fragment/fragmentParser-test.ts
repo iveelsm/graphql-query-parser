@@ -31,4 +31,42 @@ describe("Fragment Parser", function () {
 			]);
 		});
 	});
+
+	describe("names carrying digits or underscores", function () {
+		it("finds a fragment whose name is not only letters", function () {
+			const fragment = readResource(
+				baseResourceDir + "fragmentWithDelimitedName.graphql",
+			);
+			const results = parser.parse(fragment);
+			assert.strictEqual(results.length, 1);
+			assert.strictEqual(results[0].cache(), "Fragment_1");
+		});
+	});
+
+	describe("inline fragments", function () {
+		it("does not mistake an inline fragment for a definition", function () {
+			const fragment = readResource(
+				baseResourceDir + "fragmentWithInlineFragment.graphql",
+			);
+			const results = parser.parse(fragment);
+			assert.deepStrictEqual(
+				results.map((result) => result.cache()),
+				["OuterFragment"],
+			);
+		});
+
+		it("keeps the inline fragment in the template", function () {
+			const fragment = readResource(
+				baseResourceDir + "fragmentWithInlineFragment.graphql",
+			);
+			const results = parser.parse(fragment);
+			assert.strictEqual(results[0].apply(), fragment.trimEnd());
+		});
+	});
+
+	describe("documents without fragments", function () {
+		it("returns nothing for an empty document", function () {
+			assert.deepStrictEqual(parser.parse(""), []);
+		});
+	});
 });

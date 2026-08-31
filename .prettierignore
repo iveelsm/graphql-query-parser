@@ -1,2 +1,5 @@
 # Ignore documentation
 **/*.md
+
+# Ignore ANTLR output
+lib/parser/graphql/generated/

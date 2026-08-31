@@ -1,0 +1,6 @@
+query ValidQuery {
+	id
+}
+
+query Unclosed {
+	id

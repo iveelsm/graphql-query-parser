@@ -1,5 +1,13 @@
 import { QueryTemplate } from "../../../templates/index.ts";
+import { DocumentParser } from "../document/index.ts";
+import type { DocumentModel, OperationModel } from "../document/index.ts";
 import type GraphQLParser from "../graphQLParser.ts";
+
+/**
+ * Operations this package builds queries for. Mutations and subscriptions are
+ * parsed by the grammar but not yet templated.
+ */
+const SUPPORTED_OPERATION = "query";
 
 /**
  * Parses query files for by converting them into [[QueryTemplate]]s
@@ -8,13 +16,11 @@ export default class QueryParser implements GraphQLParser<
 	string,
 	QueryTemplate[]
 > {
-	private queryNameRegex =
-		/((.*?[\bquery\b])[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^)]{0,})\)){0,}/;
-	private queryRegex =
-		/((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^)]{0,})\)){0,}/g;
-	private queryVariablesRegex =
-		/((\w*query\w*)[\s]{1,}([a-zA-Z]+)[\s]{0,})(\(([^)]{0,})\)){0,}/;
-	private variableRegex = /(\$[a-zA-Z]+)/g;
+	private parser: GraphQLParser<string, DocumentModel>;
+
+	public constructor() {
+		this.parser = new DocumentParser();
+	}
 
 	/**
 	 * Parse data from the input string.
@@ -23,75 +29,41 @@ export default class QueryParser implements GraphQLParser<
 	 * @param data String to parse information from
 	 */
 	public parse(data: string): QueryTemplate[] {
-		return this.parseQueries(data);
+		return this.parseQueries(this.parser.parse(data));
 	}
 
-	private parseQueries(data: string): QueryTemplate[] {
-		const matches = data.match(this.queryRegex);
-		if (matches !== null) {
-			return matches.map((queryIdentifier) => {
-				const query = this.parseQuery(data, queryIdentifier);
-				return this.buildTemplate(query, queryIdentifier);
-			});
-		}
-		return [];
+	private parseQueries(document: DocumentModel): QueryTemplate[] {
+		return document.operations
+			.filter(
+				(operation) => operation.operationType === SUPPORTED_OPERATION,
+			)
+			.map((operation) => this.buildTemplate(operation));
 	}
 
-	private parseQuery(data: string, queryIdentifier: string): string {
-		const start = data.indexOf(
-			"{",
-			data.indexOf(queryIdentifier) + queryIdentifier.length,
-		);
-		const bracesSet = [data[start]];
-		let subQuery = data.substring(data.indexOf(queryIdentifier), start + 1);
-		let index = start;
-
-		while (bracesSet.length > 0) {
-			index++;
-			const char = data[index];
-			subQuery += char;
-			switch (char) {
-				case "{":
-					bracesSet.push(char);
-					break;
-				case "}":
-					bracesSet.pop();
-					break;
-				default:
-					continue;
-			}
-		}
-		return subQuery;
-	}
-
-	private buildTemplate(
-		query: string,
-		queryIdentifier: string,
-	): QueryTemplate {
-		const match = this.queryNameRegex.exec(queryIdentifier);
-		if (!match) {
-			throw new Error(`Invalid query identifier: ${queryIdentifier}`);
-		}
+	private buildTemplate(operation: OperationModel): QueryTemplate {
 		return new QueryTemplate(
-			match[3],
-			this.removeVariables(query),
-			this.parseVariables(query),
+			operation.name,
+			this.removeVariables(operation),
+			operation.variables,
 		);
 	}
 
-	private removeVariables(query: string): string {
-		try {
-			const match = this.queryVariablesRegex.exec(query);
-			if (match && match.length > 5) {
-				query = query.replace(match[4], "");
-			}
-			return query;
-		} catch {
-			return query;
+	/**
+	 * Drops the operation's variable declarations while keeping the references
+	 * to them in the body, which is what callers substitute values into.
+	 *
+	 * @param operation Operation to strip declarations from
+	 */
+	private removeVariables(operation: OperationModel): string {
+		const declarations = operation.variableDefinitions;
+		if (!declarations) {
+			return operation.source;
 		}
-	}
-
-	private parseVariables(data: string): string[] {
-		return [...new Set(data.match(this.variableRegex))];
+		return (
+			operation.source.slice(0, declarations.offset) +
+			operation.source.slice(
+				declarations.offset + declarations.text.length,
+			)
+		);
 	}
 }

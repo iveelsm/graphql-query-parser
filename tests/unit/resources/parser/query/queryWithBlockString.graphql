@@ -1,0 +1,8 @@
+query QueryWithBlockString {
+	id
+	result(note: """
+		an unbalanced } brace and a # hash live here
+	""") {
+		name
+	}
+}

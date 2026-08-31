@@ -1,0 +1,9 @@
+fragment OuterFragment on FragmentableType {
+	id
+
+	... on SpecificType {
+		name
+	}
+
+	...NestedFragment
+}

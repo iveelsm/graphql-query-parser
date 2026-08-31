@@ -1,0 +1,8 @@
+query Query_1($user_id: ID!, $id2: ID!) {
+	id
+	name
+
+	result(user: $user_id, other: $id2) {
+		id
+	}
+}

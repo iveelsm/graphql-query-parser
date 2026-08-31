@@ -6,7 +6,13 @@ export default [
 	eslint.configs.recommended,
 	...tseslint.configs.recommended,
 	{
-		ignores: ["dist/", "node_modules/", "*.md", "**/*.md"],
+		ignores: [
+			"dist/",
+			"node_modules/",
+			"*.md",
+			"**/*.md",
+			"lib/parser/graphql/generated/",
+		],
 	},
 	{
 		files: ["**/*.ts", "**/*.js"],

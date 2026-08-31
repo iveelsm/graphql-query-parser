@@ -1,0 +1,7 @@
+mutation MutateThing($id: ID!) {
+	id
+}
+
+subscription WatchThing {
+	id
+}

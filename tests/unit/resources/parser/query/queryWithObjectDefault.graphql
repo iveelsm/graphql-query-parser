@@ -1,0 +1,5 @@
+query QueryWithObjectDefault($filter: Filter = {label: "a (b)"}, $id: ID!) {
+	result(filter: $filter, id: $id) {
+		id
+	}
+}

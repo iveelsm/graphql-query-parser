@@ -39,6 +39,7 @@
 		"build:compile": "tsc --project tsconfig.json",
 		"build:dependency": "depcruise --exclude \"^node_modules\" --output-type dot lib | dot -T svg > dependencygraph.svg",
 		"clean": "rm -rf dist",
+		"grammar": "antlr-ng -o lib/parser/graphql/generated -D language=TypeScript --generate-visitor true --generate-listener false lib/parser/graphql/grammar/GraphQL.g4",
 		"lint": "prettier --check . && eslint .",
 		"lint:fix": "prettier --write . && eslint . --fix",
 		"coverage": "c8 --reporter=lcov --reporter=text node --import tsx --test tests/**/*-test.ts",
@@ -50,6 +51,7 @@
 		"@eslint/js": "^10.0.0",
 		"@tsconfig/recommended": "^1.0.13",
 		"@types/node": "^24.0.0",
+		"antlr-ng": "^1.0.10",
 		"c8": "^12.0.0",
 		"dependency-cruiser": "^18.0.0",
 		"eslint": "^10.0.0",
@@ -59,5 +61,8 @@
 		"tsx": "^4.21.0",
 		"typescript": "^6.0.0",
 		"typescript-eslint": "^8.22.0"
+	},
+	"dependencies": {
+		"antlr4ng": "^3.0.16"
 	}
 }

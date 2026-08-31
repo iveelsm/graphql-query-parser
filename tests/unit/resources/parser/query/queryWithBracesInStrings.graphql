@@ -1,0 +1,6 @@
+query QueryWithStrings {
+	id
+	result(filter: "}", other: "{") {
+		name
+	}
+}

@@ -1,0 +1,6 @@
+query QueryWithComments {
+	# a closing brace } inside a comment
+	id
+	# an opening brace { inside a comment
+	name
+}
